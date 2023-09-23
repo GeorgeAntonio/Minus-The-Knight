@@ -22,7 +22,6 @@ func connect_signals():
 		current_level.menu.connect(_on_menu)
 	elif(current_level == $Level_Clear):
 		current_level.next_level.connect(_on_next_level)
-	
 		
 	
 	
@@ -33,9 +32,8 @@ func _on_next_level(level):
 	change_level(next_level)
 
 func _on_new_game():
-	pass
-	#var next_level = load("res://Scenes/Levels/Prison.tscn").instantiate()
-	#change_level(next_level)
+	var next_level = load("res://Scenes/Scene_1/Scene_1.tscn").instantiate()
+	change_level(next_level)
 	
 func _on_level_clear(level):
 	pass
@@ -53,9 +51,8 @@ func _on_quit():
 	pass	
 
 func _on_menu():
-	pass
-	#var next_level = load("res://Scenes/UIs/Menus/Main_Menu/main_menu.tscn").instantiate()
-	#change_level(next_level)
+	var next_level = load("res://Scenes/Main_Menu/Main_Menu.tscn").instantiate()
+	change_level(next_level)
 	
 func change_level(next_level):
 	pass

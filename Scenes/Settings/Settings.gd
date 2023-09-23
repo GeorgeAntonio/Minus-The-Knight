@@ -53,14 +53,6 @@ func _on_audio_pressed():
 func _on_accessibility_pressed():
 	show_and_hide(Acessibility,opt)
 
-func _on_back_from_options_pressed():
-	if(get_parent().name == "CanvasLayer"):
-		get_parent().get_parent().paused = false
-		get_tree().paused = false
-		queue_free()
-	else:
-		emit_signal("back_menu")
-
 
 func _on_fullscreen_toggled(button_pressed):
 	if(button_pressed):
@@ -100,17 +92,10 @@ func _on_sound_fx_value_changed(value):
 
 func _on_back_from_audio_pressed():
 	show_and_hide(opt,Audio)
-	
-
- 
-func _on_back_to_menu_pressed():
-	var scene_controller = get_tree().current_scene
-	menu.connect(scene_controller.menu)
-	get_parent().get_parent().paused = false
-	get_tree().paused = false
-	emit_signal("menu")
-	
-
 
 func _on_back_from_access_pressed():
 	show_and_hide(opt,Acessibility)
+
+
+func _on_back_to_menu_pressed():
+	emit_signal('menu') # Replace with function body.

@@ -15,7 +15,7 @@ func _physics_process(delta):
 	velocity.y += gravity * delta
 	
 	if(!animation.is_playing()):
-		animation.play('ilde')
+		animation.play('idle')
 	if $RayCasting/Left.is_colliding():
 		waiting = false
 		follow_player(-1)
@@ -24,15 +24,13 @@ func _physics_process(delta):
 		follow_player(1)
 	if(global_position.distance_to(target.global_position) > 500):
 		velocity = Vector2.ZERO
-	elif(global_position.distance_to(target.global_position) < 120 && can_attack):
+	elif(global_position.distance_to(target.global_position) < 120):
 		velocity = Vector2.ZERO
-		$AttackTimer.start()
-		can_attack  = false
-		emit_signal('attack')
-		animation.play("attack")
-	if(position.x == 210 && waiting == true):
-		velocity = Vector2.ZERO
-		animation.flip_h = false
+		if(can_attack):
+			$AttackTimer.start()
+			can_attack  = false
+			emit_signal('attack')
+			animation.play("attack")
 	if(velocity.x > 0 && (global_position.distance_to(target.global_position) > 150)):
 		animation.play("walking")
 	move_and_slide()
