@@ -1,0 +1,33 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://cacobgjl32w46"
+path="res://.godot/imported/vanchrome down.otf-faf3d705fe59985ed4d6f12c5251cbf2.fontdata"
+
+[deps]
+
+source_file="res://Art/Fonts/Typodermic Fonts/vanchrome down.otf"
+dest_files=["res://.godot/imported/vanchrome down.otf-faf3d705fe59985ed4d6f12c5251cbf2.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=1
+generate_mipmaps=false
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+hinting=1
+subpixel_positioning=1
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[]
+language_support={}
+script_support={}
+opentype_features={}

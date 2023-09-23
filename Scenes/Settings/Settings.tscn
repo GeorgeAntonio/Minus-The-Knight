@@ -1,0 +1,197 @@
+[gd_scene load_steps=3 format=3 uid="uid://eyidipgcj8n2"]
+
+[ext_resource type="Theme" uid="uid://ctmm2ws1ljbuj" path="res://Art/Themes/menu_theme.tres" id="1_81b6b"]
+[ext_resource type="Script" path="res://Scenes/Settings/Settings.gd" id="1_bdk4o"]
+
+[node name="Settings" type="Control"]
+texture_filter = 4
+layout_mode = 3
+anchors_preset = 0
+offset_left = 7.0
+offset_top = 1.0
+offset_right = 7.0
+offset_bottom = 1.0
+theme = ExtResource("1_81b6b")
+script = ExtResource("1_bdk4o")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -16.0
+offset_top = -1.0
+offset_right = 1183.0
+offset_bottom = 682.0
+color = Color(0.427451, 0.482353, 0.572549, 1)
+
+[node name="Options" type="Control" parent="."]
+layout_mode = 2
+anchors_preset = 0
+offset_right = 40.0
+
+[node name="OptionsContainer" type="VBoxContainer" parent="Options"]
+layout_mode = 0
+offset_left = 447.0
+offset_top = 197.0
+offset_right = 779.0
+offset_bottom = 464.0
+theme_override_constants/separation = 42
+metadata/_edit_group_ = true
+
+[node name="OpenVideo" type="Button" parent="Options/OptionsContainer"]
+layout_mode = 2
+text = "Video"
+
+[node name="OpenAudio" type="Button" parent="Options/OptionsContainer"]
+layout_mode = 2
+text = "Audio
+"
+
+[node name="OpenAccess" type="Button" parent="Options/OptionsContainer"]
+layout_mode = 2
+text = "Acessibility"
+
+[node name="BackToMenu" type="Button" parent="Options"]
+layout_mode = 2
+offset_left = 447.0
+offset_top = 550.0
+offset_right = 766.0
+offset_bottom = 611.0
+text = "Back to MENU
+"
+
+[node name="Audio" type="Control" parent="."]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+offset_right = 40.0
+
+[node name="AudioContainer" type="VBoxContainer" parent="Audio"]
+layout_mode = 0
+offset_left = 502.0
+offset_top = 243.0
+offset_right = 834.0
+offset_bottom = 391.0
+theme_override_constants/separation = 45
+
+[node name="Master" type="HSlider" parent="Audio/AudioContainer"]
+layout_mode = 2
+
+[node name="Music" type="HSlider" parent="Audio/AudioContainer"]
+layout_mode = 2
+
+[node name="SFX" type="HSlider" parent="Audio/AudioContainer"]
+layout_mode = 2
+
+[node name="LabelContainer" type="VBoxContainer" parent="Audio"]
+layout_mode = 0
+offset_left = 393.0
+offset_top = 229.0
+offset_right = 482.0
+offset_bottom = 393.0
+
+[node name="MasterLabel" type="Label" parent="Audio/LabelContainer"]
+layout_mode = 2
+text = "Master"
+
+[node name="MusicLabel" type="Label" parent="Audio/LabelContainer"]
+layout_mode = 2
+text = "Music
+"
+
+[node name="SFXLabel" type="Label" parent="Audio/LabelContainer"]
+layout_mode = 2
+text = "SFX
+"
+
+[node name="BackFromAudio" type="Button" parent="Audio"]
+layout_mode = 0
+offset_left = 447.0
+offset_top = 552.0
+offset_right = 766.0
+offset_bottom = 613.0
+text = "Back "
+
+[node name="Video" type="Control" parent="."]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+offset_right = 40.0
+
+[node name="VideoContainer" type="VBoxContainer" parent="Video"]
+layout_mode = 0
+offset_left = 458.0
+offset_top = 206.0
+offset_right = 790.0
+offset_bottom = 473.0
+theme_override_constants/separation = 42
+metadata/_edit_group_ = true
+
+[node name="Fullscreen" type="CheckBox" parent="Video/VideoContainer"]
+layout_mode = 2
+text = "Fullscreen
+"
+
+[node name="Borderless" type="CheckBox" parent="Video/VideoContainer"]
+layout_mode = 2
+text = "Borderless
+"
+
+[node name="VSync" type="CheckBox" parent="Video/VideoContainer"]
+layout_mode = 2
+text = "Vsync
+"
+
+[node name="BackFromVideo" type="Button" parent="Video"]
+custom_minimum_size = Vector2(319, 61)
+layout_mode = 0
+offset_left = 451.0
+offset_top = 552.0
+offset_right = 770.0
+offset_bottom = 613.0
+text = "Back
+"
+
+[node name="Acessibility" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="AcessContainer" type="VBoxContainer" parent="Acessibility"]
+layout_mode = 0
+offset_left = 447.0
+offset_top = 197.0
+offset_right = 779.0
+offset_bottom = 361.0
+theme_override_constants/separation = 42
+
+[node name="SimpleKeys" type="CheckBox" parent="Acessibility/AcessContainer"]
+layout_mode = 2
+text = " Simple Keys"
+
+[node name="ColorblindMode" type="CheckBox" parent="Acessibility/AcessContainer"]
+layout_mode = 2
+text = "  Colorblind Mode
+"
+
+[node name="BackFromAccess" type="Button" parent="Acessibility"]
+layout_mode = 0
+offset_left = 456.0
+offset_top = 552.0
+offset_right = 767.0
+offset_bottom = 613.0
+text = "Back
+"
+
+[connection signal="pressed" from="Options/OptionsContainer/OpenVideo" to="." method="_on_video_pressed"]
+[connection signal="pressed" from="Options/OptionsContainer/OpenAudio" to="." method="_on_audio_pressed"]
+[connection signal="pressed" from="Options/OptionsContainer/OpenAccess" to="." method="_on_accessibility_pressed"]
+[connection signal="pressed" from="Options/BackToMenu" to="." method="_on_back_to_menu_pressed"]
+[connection signal="value_changed" from="Audio/AudioContainer/Master" to="." method="_on_master_value_changed"]
+[connection signal="value_changed" from="Audio/AudioContainer/Music" to="." method="_on_music_value_changed"]
+[connection signal="value_changed" from="Audio/AudioContainer/SFX" to="." method="_on_sfx_value_changed"]
+[connection signal="pressed" from="Audio/BackFromAudio" to="." method="_on_back_from_audio_pressed"]
+[connection signal="toggled" from="Video/VideoContainer/Fullscreen" to="." method="_on_fullscreen_toggled"]
+[connection signal="toggled" from="Video/VideoContainer/Borderless" to="." method="_on_borderless_toggled"]
+[connection signal="toggled" from="Video/VideoContainer/VSync" to="." method="_on_v_sync_toggled"]
+[connection signal="pressed" from="Video/BackFromVideo" to="." method="_on_back_from_video_pressed"]
+[connection signal="pressed" from="Acessibility/BackFromAccess" to="." method="_on_back_from_access_pressed"]

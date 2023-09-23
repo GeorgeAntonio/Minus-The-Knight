@@ -1,0 +1,33 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://61qa6k02spul"
+path="res://.godot/imported/berylium rg.otf-29a0c00b167c50b77a97e3fe3dc9cddd.fontdata"
+
+[deps]
+
+source_file="res://Art/Fonts/Typodermic Fonts/berylium rg.otf"
+dest_files=["res://.godot/imported/berylium rg.otf-29a0c00b167c50b77a97e3fe3dc9cddd.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=1
+generate_mipmaps=false
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+hinting=1
+subpixel_positioning=1
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[]
+language_support={}
+script_support={}
+opentype_features={}

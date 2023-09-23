@@ -1,0 +1,33 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://rqhp3p71kife"
+path="res://.godot/imported/larabiefont rg.otf-6105a9794227ecaef6a34b90a8e59b1c.fontdata"
+
+[deps]
+
+source_file="res://Art/Fonts/Typodermic Fonts/larabiefont rg.otf"
+dest_files=["res://.godot/imported/larabiefont rg.otf-6105a9794227ecaef6a34b90a8e59b1c.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=1
+generate_mipmaps=false
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+hinting=1
+subpixel_positioning=1
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[]
+language_support={}
+script_support={}
+opentype_features={}

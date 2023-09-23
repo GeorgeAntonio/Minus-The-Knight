@@ -1,0 +1,33 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://cdqbqkx4ddb12"
+path="res://.godot/imported/cardigan titling bd.otf-b0755a1f71be48d7e6ea012f8c4d45a8.fontdata"
+
+[deps]
+
+source_file="res://Art/Fonts/Typodermic Fonts/cardigan titling bd.otf"
+dest_files=["res://.godot/imported/cardigan titling bd.otf-b0755a1f71be48d7e6ea012f8c4d45a8.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=1
+generate_mipmaps=false
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+hinting=1
+subpixel_positioning=1
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[]
+language_support={}
+script_support={}
+opentype_features={}
