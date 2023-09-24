@@ -5,6 +5,7 @@ var ded :=false
 var st_loc = -1
 
 signal next_level(level,x)
+signal battle(target,dmg)
 
 func _process(delta):
 	if($CharacterBody2D.hp<=0):
