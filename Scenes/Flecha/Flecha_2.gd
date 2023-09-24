@@ -14,4 +14,4 @@ func set_direction(direction: Vector2):
 		self.direction = direction
 		
 func _on_body_entered(body):
-		queue_free()
+		self.queue_free()

@@ -1,6 +1,6 @@
 extends StaticBody2D
 var can_shoot := false
-var id = 0
+var id = 1
 var flecha = preload("res://Scenes/Flecha/Flecha_2.tscn")
 
 func _process(delta):
@@ -13,3 +13,5 @@ func _process(delta):
 func _on_timer_timeout():
 	can_shoot = true
 
+func _on_body_entered(body):
+		queue_free()

@@ -4,16 +4,22 @@
 [ext_resource type="Texture2D" uid="uid://b1bc2utoljh70" path="res://Assets/SpritesPain/BIGBalArrow.png" id="2_uc5dv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tb2lr"]
-size = Vector2(99, 19)
+size = Vector2(105.824, 25.9999)
 
 [node name="Flecha_2" type="RigidBody2D"]
+collision_layer = 8
+collision_mask = 15
 script = ExtResource("1_ax1o6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, 1.75)
+position = Vector2(-68.1765, 0.634394)
+rotation = -3.13878
 scale = Vector2(-1.13809, 1.7)
 texture = ExtResource("2_uc5dv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 1.5)
+position = Vector2(-71.0904, 0.999746)
+rotation = -3.13878
 shape = SubResource("RectangleShape2D_tb2lr")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

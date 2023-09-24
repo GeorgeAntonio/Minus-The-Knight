@@ -4,13 +4,12 @@ var hidden_room := load("res://Scenes/Scene_3.5/Scene 3.5.tscn")
 var next_room := load("res://Scenes/Scene_5/Scene_5.tscn")
 
 func _ready():
-	print($CharacterBody2D.position)
 	if st_loc == 8:
 		$CharacterBody2D.position = Vector2(62,565)
 	elif st_loc == 9:
 		$CharacterBody2D.position = Vector2(82,662)
-	elif st_loc == 7:
-		$CharacterBody2D.position = Vector2(-42,-74)
+	#elif st_loc == 7:
+		#$CharacterBody2D.position = Vector2(-42,-74)
 	elif st_loc == 10:
 		$CharacterBody2D.position = Vector2(1278,565)
 	elif st_loc == 11:

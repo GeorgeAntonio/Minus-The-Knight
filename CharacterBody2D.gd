@@ -5,8 +5,9 @@ var game_over = load("res://Scenes/Main_Menu/Main_Menu.tscn")
 @export var  JUMP_VELOCITY = -350.0
 @export var state := 1 #Armed is default
 @export var hp = 6
-signal attacking(state)
-
+@export var dmg = 4
+@export var target : CharacterBody2D
+var can_attack = true
 
 var direction
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -27,6 +28,7 @@ func _process(delta):
 		1: 
 			for i in $Sprites.get_children():
 				if(i.name  != 'Armed'):
+					JUMP_VELOCITY = -350.0
 					i.hide()
 				else:
 					i.show()
@@ -34,18 +36,22 @@ func _process(delta):
 		2:
 			for i in $Sprites.get_children():
 				if(i.name != 'NoShield'):
+					JUMP_VELOCITY = -390.0
 					i.hide()
 				else:
 					i.show()
 		3:
 			for i in $Sprites.get_children():
 				if(i.name  != 'Unarmed'):
+					JUMP_VELOCITY = -420.0					
 					i.hide()
 				else:
 					i.show()
 		4:
 			for i in $Sprites.get_children():
 				if(i.name  != 'NoArmor'):
+					SPEED = 320.0
+					JUMP_VELOCITY = -420
 					i.hide()
 				else:
 					i.show()
@@ -65,8 +71,11 @@ func _physics_process(delta):
 	#Handle Attack
 	if Input.is_action_just_pressed('left_click'):
 		for i in $Sprites.get_children():
-			i.play('attacking')
-			emit_signal('attacking',state)
+			if(state != 4):
+				i.play('attacking')
+		can_attack = false
+		if(global_position.distance_to(target.global_position) < 120):
+			target.hp = target.hp - dmg
 	#Handle Death
 	
 	# Get the input direction and handle the movement/deceleration.
@@ -113,6 +122,7 @@ func _on_no_armor_animation_finished():
 func _on_arrow_detector_body_entered(body):
 	if state == 1 && get_parent().name == 'Scene_5':
 		$Sprites/Armed.play('break')
+	hp = hp-1 
 	body.queue_free()
 		
 	

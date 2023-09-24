@@ -1,4 +1,4 @@
-[gd_scene load_steps=105 format=3 uid="uid://bagnku5x05d4v"]
+[gd_scene load_steps=110 format=3 uid="uid://bagnku5x05d4v"]
 
 [ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_o26up"]
 [ext_resource type="Texture2D" uid="uid://c7y7sssavwdxs" path="res://Assets/heroarmed/HeroKnight.png" id="2_n6dl2"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cuhrwur0umwey" path="res://Assets/herounarmed/Idle.png" id="5_m7qal"]
 [ext_resource type="Texture2D" uid="uid://dad7te5i0d6kw" path="res://Assets/heroarmed/SwordBreakAnimation.png" id="5_ntq54"]
 [ext_resource type="Texture2D" uid="uid://ffemy473y6g0" path="res://Assets/herounarmed/Run.png" id="6_uq58w"]
+[ext_resource type="Texture2D" uid="uid://brbauk2e0b1p0" path="res://Assets/herounarmed/Attack1.png" id="7_5kd4e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q0k7k"]
 size = Vector2(29, 52)
@@ -589,6 +590,22 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_pesd1"]
+atlas = ExtResource("7_5kd4e")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7q2kg"]
+atlas = ExtResource("7_5kd4e")
+region = Rect2(150, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdld3"]
+atlas = ExtResource("7_5kd4e")
+region = Rect2(300, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fldir"]
+atlas = ExtResource("7_5kd4e")
+region = Rect2(450, 0, 150, 150)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_1xklb"]
 atlas = ExtResource("5_m7qal")
 region = Rect2(0, 0, 150, 150)
@@ -657,6 +674,23 @@ region = Rect2(1050, 0, 150, 150)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_pesd1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7q2kg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kdld3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fldir")
+}],
+"loop": true,
+"name": &"attacking",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_1xklb")
 }, {
 "duration": 1.0,
@@ -715,7 +749,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lej6u"]
-size = Vector2(41, 61)
+size = Vector2(58, 76)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 texture_filter = 1
@@ -731,6 +765,7 @@ shape = SubResource("RectangleShape2D_q0k7k")
 [node name="Sprites" type="Node2D" parent="."]
 
 [node name="Armed" type="AnimatedSprite2D" parent="Sprites"]
+visible = false
 sprite_frames = SubResource("SpriteFrames_u47qx")
 animation = &"walking"
 autoplay = "idle"
@@ -753,16 +788,14 @@ frame = 9
 frame_progress = 1.0
 
 [node name="NoArmor" type="AnimatedSprite2D" parent="Sprites"]
-visible = false
 position = Vector2(0, 4)
 scale = Vector2(1.02, 1.02)
 sprite_frames = SubResource("SpriteFrames_0c8rc")
-animation = &"walking"
+animation = &"attacking"
 autoplay = "idle"
-frame_progress = 0.278652
+frame_progress = 0.95435
 
 [node name="ArrowDetector" type="Area2D" parent="."]
-visible = false
 collision_layer = 4
 collision_mask = 8
 priority = 1
@@ -770,8 +803,10 @@ priority = 1
 [node name="Sprite2D" type="Sprite2D" parent="ArrowDetector"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ArrowDetector"]
-position = Vector2(-2.5, -0.5)
+position = Vector2(-3, 1)
 shape = SubResource("RectangleShape2D_lej6u")
+
+[node name="Timer" type="Timer" parent="."]
 
 [connection signal="animation_finished" from="Sprites/Armed" to="." method="_on_armed_animation_finished"]
 [connection signal="animation_finished" from="Sprites/NoShield" to="." method="_on_no_shield_animation_finished"]
