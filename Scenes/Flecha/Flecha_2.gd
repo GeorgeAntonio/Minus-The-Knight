@@ -1,6 +1,6 @@
 extends RigidBody2D
 @onready var speed = 10
-var direction := Vector2(1,0)
+var direction := Vector2(-1,0)
 
 func _ready():
 	gravity_scale = 0

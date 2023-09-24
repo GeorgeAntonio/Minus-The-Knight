@@ -1,5 +1,5 @@
 extends RigidBody2D
-@onready var speed = 10
+@onready var speed = 5
 var direction := Vector2(-1,0)
 
 func _ready():
@@ -12,6 +12,4 @@ func _physics_process(delta):
 	
 func set_direction(direction: Vector2):
 		self.direction = direction
-		
-func _on_body_entered(body):
-		queue_free()
+

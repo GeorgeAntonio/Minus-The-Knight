@@ -4,7 +4,7 @@ var game_over = load("res://Scenes/Main_Menu/Main_Menu.tscn")
 @export var SPEED = 300.0
 @export var  JUMP_VELOCITY = -350.0
 @export var state := 1 #Armed is default
-@export var hp = 10
+@export var hp = 6
 signal attacking(state)
 
 
@@ -76,7 +76,6 @@ func _physics_process(delta):
 		velocity.x = direction * SPEED
 		if(direction > 0):
 			for i in $Sprites.get_children():
-				
 				i.flip_h=false
 		elif(direction < 0):
 			for i in $Sprites.get_children():
@@ -109,3 +108,11 @@ func _on_unarmed_animation_finished():
 func _on_no_armor_animation_finished():
 	for i in $Sprites.get_children():
 		i.play('idle')
+
+
+func _on_arrow_detector_body_entered(body):
+	if state == 1 :
+		$Sprites/Armed.play('break')
+	body.queue_free()
+		
+	

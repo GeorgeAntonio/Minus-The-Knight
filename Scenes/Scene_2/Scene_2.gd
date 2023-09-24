@@ -22,8 +22,8 @@ func _on_area_2d_body_entered(body):
 
 
 func _on_king_attack():
-	if($CharacterBody2D.state == 1):
-		$CharacterBody2D/Sprites/Armed.play('break')
+	if($CharacterBody2D.state == 2):
+		$CharacterBody2D/Sprites/NoShield.play('break')
 
 
 func _on_area_2d_2_body_entered(body):
