@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://b14ke02l4hdgw"]
+[gd_scene load_steps=4 format=3 uid="uid://b14ke02l4hdgw"]
 
 [ext_resource type="Texture2D" uid="uid://tt3cj4hdn2se" path="res://Assets/SpritesPain/Small Nuisance.png" id="1_evv5f"]
+[ext_resource type="Script" path="res://Characters/Besta/Besta.gd" id="1_mhy0l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f1kj0"]
 size = Vector2(39, 24)
 
 [node name="Besta" type="StaticBody2D"]
-metadata/_edit_group_ = true
+position = Vector2(692, 298)
+script = ExtResource("1_mhy0l")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_evv5f")
@@ -14,3 +16,12 @@ texture = ExtResource("1_evv5f")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_f1kj0")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(-23, -4)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
