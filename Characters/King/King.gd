@@ -8,7 +8,7 @@ var can_attack = true
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var direction = Vector2(1,0)
 
-signal attack()
+signal king_attack()
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -28,7 +28,7 @@ func _physics_process(delta):
 		velocity = Vector2.ZERO
 		$AttackTimer.start()
 		can_attack  = false
-		emit_signal('attack')
+		emit_signal('king_attack')
 		var att = randi_range(1,3)
 		match att:
 			1:
