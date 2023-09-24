@@ -172,7 +172,6 @@ scale = Vector2(0.656863, 0.573529)
 
 [node name="Saw2" type="Sprite2D" parent="Area2D2"]
 rotation = 1.83207
-scale = Vector2(1, 1)
 texture = ExtResource("5_u2q7c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
