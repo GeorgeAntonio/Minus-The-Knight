@@ -47,7 +47,7 @@ metadata/_edit_lock_ = true
 position = Vector2(339, 40)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-position = Vector2(-61, 5)
+position = Vector2(-61, 4)
 zoom = Vector2(3, 3)
 limit_left = 0
 
