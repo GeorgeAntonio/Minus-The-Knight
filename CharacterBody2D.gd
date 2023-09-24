@@ -1,10 +1,12 @@
 extends CharacterBody2D
 
-
+var game_over = load("res://Scenes/Game_Over/Game_Over.tscn")
 @export var SPEED = 300.0
 @export var  JUMP_VELOCITY = -400.0
-@export var state := 0 #Armed is default
+@export var state := 1 #Armed is default
 @export var hp = 10
+signal attacking(state)
+signal next_level()
 
 var direction
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -14,6 +16,15 @@ func change_state(n:int):
 	state = n
 
 func _process(delta):
+	if(hp <= 0):
+		emit_signal('next_level',game_over)
+	if(velocity != Vector2.ZERO):
+		for i in $Sprites.get_children():
+			i.play('walking')
+	else:
+		for i in $Sprites.get_children():
+			if(i.animation == 'walking'):
+				i.play('idle')
 	match state:
 		1: 
 			for i in $Sprites.get_children():
@@ -23,7 +34,7 @@ func _process(delta):
 					i.show()
 					
 		2:
-			for i in $Sprite.get_children():
+			for i in $Sprites.get_children():
 				if(i.name != 'NoShield'):
 					i.hide()
 				else:
@@ -49,25 +60,54 @@ func _physics_process(delta):
 	# Handle Jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		#for i in $Sprites.get_children():
+		#	i.play('jump')
 
+
+	#Handle Attack
+	if Input.is_action_just_pressed('left_click'):
+		for i in $Sprites.get_children():
+			i.play('attacking')
+			emit_signal('attacking',state)
+	#Handle Death
+	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	direction = Input.get_axis("ui_left", "ui_right")
-	print(direction)
 	if direction:
 		velocity.x = direction * SPEED
 		if(direction > 0):
-			$Sprites/Armed.flip_h=false;
-			$Sprites/Unarmed.flip_h=false;
-			$Sprites/NoShield.flip_h=false;
-			$Sprites/NoArmor.flip_h=false;
-		if(direction < 0):
-			$Sprites/Armed.flip_h=true;
-			$Sprites/Unarmed.flip_h=true;
-			$Sprites/NoShield.flip_h=true;
-			$Sprites/NoArmor.flip_h=true;
+			for i in $Sprites.get_children():
+				
+				i.flip_h=false
+		elif(direction < 0):
+			for i in $Sprites.get_children():
+				i.flip_h=true
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 #	#	
 
 	move_and_slide()
+
+func _on_armed_animation_finished():
+	for i in $Sprites.get_children():
+		if(i.animation == 'break'):
+			change_state(2)
+		i.play('idle')
+
+
+func _on_no_shield_animation_finished():
+	for i in $Sprites.get_children():
+		if(i.animation == 'break'):
+			change_state(3)
+		i.play('idle')
+
+
+func _on_unarmed_animation_finished():
+	for i in $Sprites.get_children():
+		i.play('idle')
+
+
+func _on_no_armor_animation_finished():
+	for i in $Sprites.get_children():
+		i.play('idle')

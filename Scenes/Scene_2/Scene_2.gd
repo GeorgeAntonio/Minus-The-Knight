@@ -15,3 +15,8 @@ func _process(delta):
 
 func _on_area_2d_body_entered(body):
 	pass # Replace with function body.
+
+
+func _on_king_attack():
+	if($CharacterBody2D.state == 1):
+		$CharacterBody2D/Sprites/Armed.play('break')
