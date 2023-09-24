@@ -20,7 +20,7 @@ func connect_signals():
 		current_level.quit.connect(_on_quit)
 	elif(current_level == $Settings):
 		current_level.menu.connect(_on_menu)
-	elif(current_level == $Level_Clear):
+	else:
 		current_level.next_level.connect(_on_next_level)
 		
 	
