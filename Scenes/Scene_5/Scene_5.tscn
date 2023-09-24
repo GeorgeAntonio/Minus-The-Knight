@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cnx7tev2e6t6m"]
+[gd_scene load_steps=9 format=3 uid="uid://cnx7tev2e6t6m"]
 
 [ext_resource type="TileSet" uid="uid://cxbffb7mcq178" path="res://Assets/Tilemap_Presets/Template_Castelo.tres" id="1_7g2lr"]
 [ext_resource type="Script" path="res://Scenes/Scene_5/Scene_5.gd" id="1_gvi4u"]
@@ -8,13 +8,16 @@
 size = Vector2(31, 136)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onkj3"]
-size = Vector2(24, 100)
+size = Vector2(35, 93)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ey7go"]
-size = Vector2(29, 130)
+size = Vector2(49, 130)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ddxd"]
-size = Vector2(115, 20)
+size = Vector2(115, 39)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m0yh2"]
+size = Vector2(34.5, 90.75)
 
 [node name="Scene_5" type="Node2D"]
 script = ExtResource("1_gvi4u")
@@ -47,15 +50,14 @@ layer_3/z_index = 0
 layer_3/tile_data = PackedInt32Array()
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("3_fwhlc")]
-position = Vector2(326, 455)
-JUMP_VELOCITY = -200.0
-metadata/_edit_group_ = true
+position = Vector2(139, 451)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 zoom = Vector2(3, 3)
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(54, 401)
+collision_mask = 4
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
@@ -64,29 +66,40 @@ shape = SubResource("RectangleShape2D_gaufx")
 
 [node name="Area2D2" type="Area2D" parent="."]
 position = Vector2(1010, 608)
+collision_mask = 4
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
-position = Vector2(-2, -17)
+position = Vector2(-3.5, -14.5)
 shape = SubResource("RectangleShape2D_onkj3")
 
 [node name="Area2D3" type="Area2D" parent="."]
 position = Vector2(1055, 385)
+collision_mask = 4
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D3"]
-position = Vector2(-1.5, -34)
+position = Vector2(-11.5, -34)
 shape = SubResource("RectangleShape2D_ey7go")
 
 [node name="Area2D4" type="Area2D" parent="."]
 position = Vector2(873, 534)
+collision_mask = 4
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D4"]
-position = Vector2(47.5, 0)
+position = Vector2(47.5, -9.5)
 shape = SubResource("RectangleShape2D_6ddxd")
+
+[node name="Area2D5" type="Area2D" parent="."]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D5"]
+position = Vector2(66.75, 591.375)
+shape = SubResource("RectangleShape2D_m0yh2")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]
 [connection signal="body_entered" from="Area2D3" to="." method="_on_area_2d_3_body_entered"]
 [connection signal="body_entered" from="Area2D4" to="." method="_on_area_2d_4_body_entered"]
+[connection signal="body_entered" from="Area2D5" to="." method="_on_area_2d_5_body_entered"]

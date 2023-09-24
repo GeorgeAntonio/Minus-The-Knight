@@ -1,12 +1,12 @@
 extends CharacterBody2D
 
-var game_over = load("res://Scenes/Game_Over/Game_Over.tscn")
+var game_over = load("res://Scenes/Main_Menu/Main_Menu.tscn")
 @export var SPEED = 300.0
-@export var  JUMP_VELOCITY = -400.0
+@export var  JUMP_VELOCITY = -350.0
 @export var state := 1 #Armed is default
 @export var hp = 10
 signal attacking(state)
-signal next_level()
+
 
 var direction
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -16,8 +16,6 @@ func change_state(n:int):
 	state = n
 
 func _process(delta):
-	if(hp <= 0):
-		emit_signal('next_level',game_over)
 	if(velocity != Vector2.ZERO):
 		for i in $Sprites.get_children():
 			i.play('walking')

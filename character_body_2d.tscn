@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=3 uid="uid://bagnku5x05d4v"]
+[gd_scene load_steps=104 format=3 uid="uid://bagnku5x05d4v"]
 
 [ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_o26up"]
 [ext_resource type="Texture2D" uid="uid://c7y7sssavwdxs" path="res://Assets/heroarmed/HeroKnight.png" id="2_n6dl2"]
@@ -482,13 +482,48 @@ region = Rect2(600, 0, 100, 55)
 atlas = ExtResource("4_ptg6o")
 region = Rect2(700, 0, 100, 55)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6lnl"]
+atlas = ExtResource("4_ptg6o")
+region = Rect2(800, 0, 100, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3d6uc"]
+atlas = ExtResource("4_ptg6o")
+region = Rect2(900, 0, 100, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s1s8h"]
+atlas = ExtResource("4_ptg6o")
+region = Rect2(0, 55, 100, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbips"]
+atlas = ExtResource("4_ptg6o")
+region = Rect2(100, 55, 100, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfn1n"]
+atlas = ExtResource("4_ptg6o")
+region = Rect2(200, 55, 100, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6etc2"]
+atlas = ExtResource("4_ptg6o")
+region = Rect2(300, 55, 100, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8mvub"]
+atlas = ExtResource("4_ptg6o")
+region = Rect2(400, 55, 100, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jilcx"]
+atlas = ExtResource("4_ptg6o")
+region = Rect2(500, 55, 100, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gvstn"]
+atlas = ExtResource("4_ptg6o")
+region = Rect2(600, 55, 100, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hrspd"]
+atlas = ExtResource("4_ptg6o")
+region = Rect2(700, 55, 100, 55)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_y4ukq"]
 animations = [{
-"frames": [],
-"loop": false,
-"name": &"attacking",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_si76h")
@@ -516,6 +551,41 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a6lnl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3d6uc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s1s8h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cbips")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfn1n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6etc2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8mvub")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jilcx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gvstn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hrspd")
+}],
+"loop": false,
+"name": &"walking",
 "speed": 5.0
 }]
 
@@ -646,43 +716,46 @@ animations = [{
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 texture_filter = 1
-position = Vector2(200, 163)
+position = Vector2(65, 158)
 collision_layer = 4
 collision_mask = 15
 script = ExtResource("1_o26up")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-63, -1)
 shape = SubResource("RectangleShape2D_q0k7k")
 
 [node name="Sprites" type="Node2D" parent="."]
 
 [node name="Armed" type="AnimatedSprite2D" parent="Sprites"]
-position = Vector2(-60, -5)
 sprite_frames = SubResource("SpriteFrames_u47qx")
-animation = &"break"
+animation = &"walking"
 autoplay = "idle"
+frame_progress = 0.317311
 
 [node name="NoShield" type="AnimatedSprite2D" parent="Sprites"]
 visible = false
-position = Vector2(-57, -5)
+position = Vector2(1, -1)
 sprite_frames = SubResource("SpriteFrames_5grgq")
-animation = &"break"
+animation = &"attacking"
 autoplay = "idle"
+frame = 5
+frame_progress = 1.0
 
 [node name="Unarmed" type="AnimatedSprite2D" parent="Sprites"]
 visible = false
-position = Vector2(-58, -5)
+position = Vector2(3, 0)
 sprite_frames = SubResource("SpriteFrames_y4ukq")
 animation = &"idle"
 
 [node name="NoArmor" type="AnimatedSprite2D" parent="Sprites"]
 visible = false
-position = Vector2(-61.5, 1)
+position = Vector2(0, 4)
 scale = Vector2(1.02, 1.02)
 sprite_frames = SubResource("SpriteFrames_0c8rc")
-animation = &"idle"
+animation = &"walking"
 autoplay = "idle"
+frame = 6
+frame_progress = 0.802794
 
 [connection signal="animation_finished" from="Sprites/Armed" to="." method="_on_armed_animation_finished"]
 [connection signal="animation_finished" from="Sprites/NoShield" to="." method="_on_no_shield_animation_finished"]

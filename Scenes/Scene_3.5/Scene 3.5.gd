@@ -1,8 +1,7 @@
-extends Node2D
+extends Scene
 
 var previous_cena := load("res://Scenes/Scene_4/Scene_4.tscn")
 
-signal next_level(previous_cena, x);
 # Called when the node enters the scene tree for the first time.
 
 func _ready():

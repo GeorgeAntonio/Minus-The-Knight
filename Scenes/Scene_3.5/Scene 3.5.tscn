@@ -36,7 +36,7 @@ position = Vector2(274, 56)
 texture = ExtResource("2_gatbl")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("3_ito7l")]
-position = Vector2(73, -83)
+position = Vector2(-42, -74)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 zoom = Vector2(3, 3)
