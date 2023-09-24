@@ -16,12 +16,6 @@ func _ready():
 	elif st_loc == 11:
 		$CharacterBody2D.position = Vector2(1288,670)
 		
-		
-
-
-
-
-
 #func _on_e_2_body_entered(body):
 #	emit_signal("next_level", previous_cena, 2)
 
