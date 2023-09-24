@@ -28,3 +28,8 @@ func _on_king_attack():
 
 func _on_area_2d_2_body_entered(body):
 	emit_signal("next_level", level, 12)
+
+
+func _on_spikes_body_entered(body):
+	if(body.state != 4):
+		body.hp = 0

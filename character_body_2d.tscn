@@ -715,7 +715,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lej6u"]
-size = Vector2(41, 61)
+size = Vector2(58, 76)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 texture_filter = 1
@@ -762,7 +762,6 @@ autoplay = "idle"
 frame_progress = 0.278652
 
 [node name="ArrowDetector" type="Area2D" parent="."]
-visible = false
 collision_layer = 4
 collision_mask = 8
 priority = 1
@@ -770,7 +769,7 @@ priority = 1
 [node name="Sprite2D" type="Sprite2D" parent="ArrowDetector"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ArrowDetector"]
-position = Vector2(-2.5, -0.5)
+position = Vector2(-3, 1)
 shape = SubResource("RectangleShape2D_lej6u")
 
 [connection signal="animation_finished" from="Sprites/Armed" to="." method="_on_armed_animation_finished"]

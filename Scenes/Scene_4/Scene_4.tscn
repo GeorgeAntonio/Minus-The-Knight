@@ -428,7 +428,7 @@ position = Vector2(2599, 424)
 
 [node name="Besta3" parent="." instance=ExtResource("7_3g1vn")]
 position = Vector2(649, 422)
-scale = Vector2(-1.12, 1)
+scale = Vector2(1.0457, 1.02238)
 
 [connection signal="body_entered" from="Exit_1" to="." method="_on_exit_1_body_entered"]
 [connection signal="body_entered" from="Exit_2" to="." method="_on_exit_2_body_entered"]
