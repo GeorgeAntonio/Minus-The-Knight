@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgc68i4vw514b"]
+
+[ext_resource type="Script" path="res://Characters/BIGarrows.gd" id="1_83vjm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xmad4"]
+size = Vector2(158, 179)
+
+[node name="BIGarrows" type="StaticBody2D"]
+script = ExtResource("1_83vjm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(67, 77)
+shape = SubResource("RectangleShape2D_xmad4")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(-37, 46)

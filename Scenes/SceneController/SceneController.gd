@@ -3,6 +3,7 @@ extends Node
 @onready var current_level := $Main_Menu
 
 var reload := false
+var player_state : int
 
 func _ready():
 	var settings = load("res://Scenes/Settings/Settings.tscn").instantiate()
@@ -23,9 +24,9 @@ func connect_signals():
 
 func _on_next_level(level,n):
 	var next_level = level.instantiate()
-	print(next_level)
 	if(next_level.name != 'Main_Menu' && next_level.name != 'Settings' ):
 		next_level.st_loc = n
+		next_level.get_node('CharacterBody2D').state = current_level.get_node('CharacterBody2D').state
 	change_level(next_level)
 
 func _on_new_game():
