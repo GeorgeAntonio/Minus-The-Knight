@@ -30,7 +30,7 @@ func _on_next_level(level,n):
 	change_level(next_level)
 
 func _on_new_game():
-	var next_level = load("res://Scenes/Scene_2/Scene_2.tscn").instantiate()
+	var next_level = load("res://Scenes/Scene_1/Scene_1.tscn").instantiate()
 	change_level(next_level)
 
 func _on_settings():
