@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bjbh33b7tp0bp"]
+[gd_scene load_steps=10 format=3 uid="uid://bjbh33b7tp0bp"]
 
 [ext_resource type="Texture2D" uid="uid://ddn4yjglnibl0" path="res://Art/Free Pixel Art Forest/Preview/Background.png" id="1_0fw4k"]
+[ext_resource type="Script" path="res://Scenes/Scene_2/Scene_2.gd" id="1_v5g5w"]
 [ext_resource type="TileSet" uid="uid://cxbffb7mcq178" path="res://Assets/Tilemap_Presets/Template_Castelo.tres" id="2_p4nh3"]
 [ext_resource type="Texture2D" uid="uid://dn01hdm3w02d4" path="res://Art/Throne.png" id="4_elen6"]
 [ext_resource type="PackedScene" uid="uid://bkt74veruxyxm" path="res://Characters/King/King.tscn" id="5_bwvmq"]
@@ -12,8 +13,12 @@ size = Vector2(30.75, 92.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iki2f"]
 size = Vector2(108, 31)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nwmi7"]
+size = Vector2(29, 56)
+
 [node name="Scene_2" type="Node2D"]
 texture_filter = 1
+script = ExtResource("1_v5g5w")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_left = -4.0
@@ -77,4 +82,13 @@ target = NodePath("../CharacterBody2D")
 [node name="CharacterBody2D" parent="." instance=ExtResource("6_vco44")]
 position = Vector2(278, 577)
 
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(57, 215)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(4.5, -18)
+shape = SubResource("RectangleShape2D_nwmi7")
+
 [connection signal="area_entered" from="ArenaDoor" to="King" method="_on_arena_door_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
