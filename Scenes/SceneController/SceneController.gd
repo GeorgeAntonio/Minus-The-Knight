@@ -20,8 +20,8 @@ func connect_signals():
 		current_level.menu.connect(_on_menu)
 	else:
 		current_level.next_level.connect(_on_next_level)
-	
 
+	
 func _on_next_level(level,n):
 	var next_level = level.instantiate()
 	if(next_level.name != 'Main_Menu' && next_level.name != 'Settings' ):

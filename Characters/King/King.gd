@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var target : CharacterBody2D
 @export var speed := 50.0
 @onready var animation = $AnimatedSprite2D
+var hp = 100
 var waiting = true
 var can_attack = true
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -10,6 +11,10 @@ var direction = Vector2(1,0)
 
 signal king_attack()
 
+func _process(delta):
+	if(hp<=0):
+		self.queue_free()
+		
 func _physics_process(delta):
 	# Add the gravity.
 	velocity.y += gravity * delta

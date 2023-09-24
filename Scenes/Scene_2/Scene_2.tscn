@@ -67,6 +67,7 @@ scale = Vector2(1.46875, 1.8125)
 texture = ExtResource("4_elen6")
 
 [node name="ArenaDoor" type="Area2D" parent="."]
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ArenaDoor"]
 position = Vector2(575, 177.25)
@@ -81,11 +82,14 @@ shape = SubResource("RectangleShape2D_iki2f")
 
 [node name="King" parent="." node_paths=PackedStringArray("target") instance=ExtResource("5_bwvmq")]
 position = Vector2(210, 193)
+collision_layer = 8
+collision_mask = 15
 target = NodePath("../CharacterBody2D")
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("6_vco44")]
+[node name="CharacterBody2D" parent="." node_paths=PackedStringArray("target") instance=ExtResource("6_vco44")]
 position = Vector2(239, 571)
 state = 2
+target = NodePath("../King")
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(57, 215)
