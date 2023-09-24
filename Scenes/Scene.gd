@@ -1,9 +1,11 @@
 class_name Scene extends Node2D
 
-var game_over = load("res://Scenes/Game_Over/Game_Over.tscn")
+var game_over = load("res://Scenes/Main_Menu/Main_Menu.tscn")
+var ded :=false
+var st_loc = -1
 
 signal next_level(level,x)
 
 func _process(delta):
-	if $CharacterBody2D.hp >=0 :
+	if($CharacterBody2D.hp<=0):
 		emit_signal('next_level', game_over, -1) 

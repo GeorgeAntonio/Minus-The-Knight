@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bjbh33b7tp0bp"]
+[gd_scene load_steps=11 format=3 uid="uid://bjbh33b7tp0bp"]
 
 [ext_resource type="Texture2D" uid="uid://ddn4yjglnibl0" path="res://Art/Free Pixel Art Forest/Preview/Background.png" id="1_0fw4k"]
 [ext_resource type="Script" path="res://Scenes/Scene_2/Scene_2.gd" id="1_v5g5w"]
@@ -14,7 +14,10 @@ size = Vector2(30.75, 92.5)
 size = Vector2(108, 31)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nwmi7"]
-size = Vector2(29, 56)
+size = Vector2(29, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ftlxp"]
+size = Vector2(59, 106.5)
 
 [node name="Scene_2" type="Node2D"]
 texture_filter = 1
@@ -80,16 +83,26 @@ position = Vector2(210, 193)
 target = NodePath("../CharacterBody2D")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("6_vco44")]
-position = Vector2(371, 189)
+position = Vector2(439, 179)
+state = 2
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(57, 215)
+collision_mask = 4
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(4.5, -18)
+position = Vector2(4.5, -2)
 shape = SubResource("RectangleShape2D_nwmi7")
+
+[node name="Area2D2" type="Area2D" parent="."]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(159.5, 617.25)
+shape = SubResource("RectangleShape2D_ftlxp")
 
 [connection signal="area_entered" from="ArenaDoor" to="King" method="_on_arena_door_area_entered"]
 [connection signal="king_attack" from="King" to="." method="_on_king_attack"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]

@@ -1,25 +1,43 @@
-extends Node2D
+extends Scene
 
 var level := load("res://Scenes/Scene_4/Scene_4.tscn")
-signal next_level(level, x);
+var exit_1 : bool
+var exit_2 : bool
+var exit_3 : bool
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	exit_1 = false
+	exit_2 = false
+	exit_3 = false
+	if st_loc == 1:
+		$CharacterBody2D.position = Vector2(251,-27)
+	elif st_loc == 2:
+		$CharacterBody2D.position = Vector2(249,-182)		
+	elif st_loc == 3:
+		$CharacterBody2D.position = Vector2(262,85)
+	print(st_loc)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	super._process(delta)
+	if(exit_1):
+		emit_signal('next_level', level, 1)
+	elif(exit_2):
+		emit_signal('next_level', level, 2)
+	elif(exit_3):
+		emit_signal('next_level', level, 3)
 
 
 func _on_s_1_body_entered(body): 
-	emit_signal("next_level", level, 1)
-
+	exit_1 = true
 
 func _on_s_2_body_entered(body):
-	emit_signal("next_level", level, 2)
-
+	exit_2 = true
 
 func _on_s_3_body_entered(body):
-	emit_signal("next_level", level, 3)
+	exit_3 = true
+
+func _on_water_body_entered(body):
+	if(body.state != 4):
+		body.hp = 0

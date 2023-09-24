@@ -3,6 +3,7 @@ extends Node
 @onready var current_level := $Main_Menu
 
 var reload := false
+var player_state : int
 
 func _ready():
 	var settings = load("res://Scenes/Settings/Settings.tscn").instantiate()
@@ -11,10 +12,7 @@ func _ready():
 	
 
 func connect_signals():
-	if(current_level == $Game_Over):
-		current_level.menu.connect(_on_menu)
-		current_level.quit.connect(_on_quit)
-	elif(current_level == $Main_Menu):
+	if(current_level == $Main_Menu):
 		current_level.new_game.connect(_on_new_game)
 		current_level.settings.connect(_on_settings)
 		current_level.quit.connect(_on_quit)
@@ -22,25 +20,18 @@ func connect_signals():
 		current_level.menu.connect(_on_menu)
 	else:
 		current_level.next_level.connect(_on_next_level)
-		
-	
 	
 
-
-func _on_next_level(level):
+func _on_next_level(level,n):
 	var next_level = level.instantiate()
+	if(next_level.name != 'Main_Menu' && next_level.name != 'Settings' ):
+		next_level.st_loc = n
+		next_level.get_node('CharacterBody2D').state = current_level.get_node('CharacterBody2D').state
 	change_level(next_level)
 
 func _on_new_game():
 	var next_level = load("res://Scenes/Scene_1/Scene_1.tscn").instantiate()
 	change_level(next_level)
-	
-func _on_level_clear(level):
-	pass
-	#var next_level = load("res://Scenes/UIs/Level_Clear/Level_Clear.tscn").instantiate()
-	#next_level.level = level
-	#change_level(next_level)
-	
 
 func _on_settings():
 	var next_level = load("res://Scenes/Settings/Settings.tscn").instantiate()
@@ -48,14 +39,12 @@ func _on_settings():
 
 func _on_quit():
 	get_tree().quit()
-	pass	
 
 func _on_menu():
 	var next_level = load("res://Scenes/Main_Menu/Main_Menu.tscn").instantiate()
 	change_level(next_level)
 	
 func change_level(next_level):
-	pass
 	add_child(next_level)
 	current_level.queue_free()
 	current_level = next_level 

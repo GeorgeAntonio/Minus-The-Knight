@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b501r3528wd06"
-path="res://.godot/imported/SmollArrow.png-8f37e7f4ea8a692576240f2b212ba8b0.ctex"
+uid="uid://jkuy2ssdpbyu"
+path="res://.godot/imported/chandelier-wire.png-2401bc41c44ed226a04baefd2a474aaf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/SpritesPain/SmollArrow.png"
-dest_files=["res://.godot/imported/SmollArrow.png-8f37e7f4ea8a692576240f2b212ba8b0.ctex"]
+source_file="res://Art/chandelier-wire.png"
+dest_files=["res://.godot/imported/chandelier-wire.png-2401bc41c44ed226a04baefd2a474aaf.ctex"]
 
 [params]
 
