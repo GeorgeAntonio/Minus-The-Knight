@@ -731,7 +731,6 @@ shape = SubResource("RectangleShape2D_q0k7k")
 [node name="Sprites" type="Node2D" parent="."]
 
 [node name="Armed" type="AnimatedSprite2D" parent="Sprites"]
-visible = false
 sprite_frames = SubResource("SpriteFrames_u47qx")
 animation = &"walking"
 autoplay = "idle"
@@ -741,10 +740,9 @@ frame_progress = 0.317311
 visible = false
 position = Vector2(1, -1)
 sprite_frames = SubResource("SpriteFrames_5grgq")
-animation = &"break"
+animation = &"idle"
 autoplay = "idle"
-frame = 4
-frame_progress = 1.0
+frame_progress = 0.948762
 
 [node name="Unarmed" type="AnimatedSprite2D" parent="Sprites"]
 visible = false
@@ -761,7 +759,7 @@ scale = Vector2(1.02, 1.02)
 sprite_frames = SubResource("SpriteFrames_0c8rc")
 animation = &"walking"
 autoplay = "idle"
-frame_progress = 0.929897
+frame_progress = 0.278652
 
 [node name="ArrowDetector" type="Area2D" parent="."]
 visible = false

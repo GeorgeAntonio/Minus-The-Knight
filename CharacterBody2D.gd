@@ -111,7 +111,7 @@ func _on_no_armor_animation_finished():
 
 
 func _on_arrow_detector_body_entered(body):
-	if state == 1 :
+	if state == 1 && get_parent().name == 'Scene_5':
 		$Sprites/Armed.play('break')
 	body.queue_free()
 		
