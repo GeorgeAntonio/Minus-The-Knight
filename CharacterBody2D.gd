@@ -27,6 +27,7 @@ func _process(delta):
 		1: 
 			for i in $Sprites.get_children():
 				if(i.name  != 'Armed'):
+					JUMP_VELOCITY = -350.0
 					i.hide()
 				else:
 					i.show()
@@ -34,12 +35,14 @@ func _process(delta):
 		2:
 			for i in $Sprites.get_children():
 				if(i.name != 'NoShield'):
+					JUMP_VELOCITY = -390.0
 					i.hide()
 				else:
 					i.show()
 		3:
 			for i in $Sprites.get_children():
 				if(i.name  != 'Unarmed'):
+					JUMP_VELOCITY = -420.0					
 					i.hide()
 				else:
 					i.show()
@@ -113,6 +116,7 @@ func _on_no_armor_animation_finished():
 func _on_arrow_detector_body_entered(body):
 	if state == 1 && get_parent().name == 'Scene_5':
 		$Sprites/Armed.play('break')
+		hp -= 1 
 	body.queue_free()
 		
 	
