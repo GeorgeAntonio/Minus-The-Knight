@@ -18,11 +18,11 @@ func _ready():
 	if st_loc == 12:
 		$CharacterBody2D.position = Vector2(953,386)
 	elif st_loc == 13:
-		$CharacterBody2D.position = Vector2(921,606)
+		$CharacterBody2D.position = Vector2(134,588)
 	elif st_loc == 14:
 		$CharacterBody2D.position = Vector2(109,610)
 	elif st_loc == 15:
-		$CharacterBody2D.position = Vector2(112,610)
+		$CharacterBody2D.position = Vector2(154,593)
 
 func _on_area_2d_body_entered(body):
 	emit_signal("next_level", previous_cena, 10)

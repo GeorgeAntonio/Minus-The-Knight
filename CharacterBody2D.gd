@@ -55,6 +55,7 @@ func _process(delta):
 					i.hide()
 				else:
 					i.show()
+		5: dmg = 10000
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -73,9 +74,12 @@ func _physics_process(delta):
 		for i in $Sprites.get_children():
 			if(state != 4):
 				i.play('attacking')
+				if(state == 5):
+					emit_signal("win")
 		can_attack = false
-		if(global_position.distance_to(target.global_position) < 120):
-			target.hp = target.hp - dmg
+		if(target != null):
+			if(global_position.distance_to(target.global_position) < 120):
+				target.hp = target.hp - dmg
 	#Handle Death
 	
 	# Get the input direction and handle the movement/deceleration.
@@ -122,7 +126,9 @@ func _on_no_armor_animation_finished():
 func _on_arrow_detector_body_entered(body):
 	if state == 1 && get_parent().name == 'Scene_5':
 		$Sprites/Armed.play('break')
-	hp = hp-1 
-	body.queue_free()
+	elif state > 1:
+		hp = hp - 1 
+	if(!(body is CharacterBody2D)):
+		body.queue_free()
 		
 	

@@ -3,6 +3,7 @@ extends Scene
 
 var level_b := load("res://Scenes/Scene_1/Scene_1.tscn")
 var level_f := load("res://Scenes/Scene_3/Scene_3.tscn")
+var level_s := load("res://Scenes/Scene_3.5/Scene 3.5.tscn")
 
 var exit_1 : bool
 var exit_2 : bool
@@ -41,7 +42,7 @@ func _process(delta):
 	elif(exit_2):
 		emit_signal('next_level', level_b, 2)
 	elif(exit_3):
-		emit_signal('next_level', level_f, 7)
+		emit_signal('next_level', level_s, 7)
 	if(exit_4):
 		emit_signal('next_level', level_f, 8)
 	elif(exit_5):

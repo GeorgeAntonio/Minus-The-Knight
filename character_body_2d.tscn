@@ -793,7 +793,7 @@ scale = Vector2(1.02, 1.02)
 sprite_frames = SubResource("SpriteFrames_0c8rc")
 animation = &"attacking"
 autoplay = "idle"
-frame_progress = 0.95435
+frame_progress = 0.871845
 
 [node name="ArrowDetector" type="Area2D" parent="."]
 collision_layer = 4
