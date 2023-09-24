@@ -42,7 +42,6 @@ layer_1/tile_data = PackedInt32Array(196610, 655360, 19, 196611, 720896, 19, 458
 [node name="CharacterBody2D" parent="." instance=ExtResource("3_pya8d")]
 z_index = -1
 position = Vector2(-40, 22)
-JUMP_VELOCITY = -420.0
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 zoom = Vector2(3, 3)
