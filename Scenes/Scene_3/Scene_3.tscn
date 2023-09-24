@@ -112,7 +112,7 @@ zoom = Vector2(4, 4)
 
 [node name="saw" type="Sprite2D" parent="."]
 position = Vector2(364, 596)
-rotation = 0.191052
+rotation = 3.34606
 scale = Vector2(0.320829, 0.32247)
 texture = ExtResource("4_gmneu")
 
@@ -171,7 +171,7 @@ position = Vector2(747, 595)
 scale = Vector2(0.656863, 0.573529)
 
 [node name="Saw2" type="Sprite2D" parent="Area2D2"]
-rotation = 1.94958
+rotation = 1.83207
 scale = Vector2(1, 1)
 texture = ExtResource("5_u2q7c")
 
