@@ -83,7 +83,8 @@ position = Vector2(210, 193)
 target = NodePath("../CharacterBody2D")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("6_vco44")]
-position = Vector2(231, 584)
+position = Vector2(439, 179)
+state = 2
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(57, 215)
