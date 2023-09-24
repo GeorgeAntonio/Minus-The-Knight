@@ -18,7 +18,9 @@ func connect_signals():
 		self.king_attack.connect('on_king_attack')
 		
 func on_king_attack():
+	$Sprites/Armed.play('break')
 	change_state(3)
+	
 func change_state(n:int):
 	state = n
 
