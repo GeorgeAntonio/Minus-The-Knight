@@ -1,4 +1,4 @@
-[gd_scene load_steps=110 format=3 uid="uid://bagnku5x05d4v"]
+[gd_scene load_steps=125 format=3 uid="uid://bagnku5x05d4v"]
 
 [ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_o26up"]
 [ext_resource type="Texture2D" uid="uid://c7y7sssavwdxs" path="res://Assets/heroarmed/HeroKnight.png" id="2_n6dl2"]
@@ -9,6 +9,17 @@
 [ext_resource type="Texture2D" uid="uid://dad7te5i0d6kw" path="res://Assets/heroarmed/SwordBreakAnimation.png" id="5_ntq54"]
 [ext_resource type="Texture2D" uid="uid://ffemy473y6g0" path="res://Assets/herounarmed/Run.png" id="6_uq58w"]
 [ext_resource type="Texture2D" uid="uid://brbauk2e0b1p0" path="res://Assets/herounarmed/Attack1.png" id="7_5kd4e"]
+[ext_resource type="AudioStream" uid="uid://c0ufuo7akueid" path="res://Assets/442715__rosethefl0wer__hopppp.wav" id="10_16joa"]
+[ext_resource type="AudioStream" uid="uid://bhpwd538epyn7" path="res://Assets/WhatsApp-Audio-2023-09-24-at-14.44.39.wav" id="11_pstdc"]
+[ext_resource type="AudioStream" uid="uid://wlq6so1413iw" path="res://Assets/WhatsApp-Ptt-2023-09-24-at-14.47.20.wav" id="12_c5ft4"]
+[ext_resource type="AudioStream" uid="uid://2xx60j8cla64" path="res://Assets/695388__fmaudio__male-death-cry-5.wav" id="13_jxrqt"]
+[ext_resource type="AudioStream" uid="uid://ciapys3risu2x" path="res://Assets/339162__girlhurl__ouch.wav" id="14_6cxdr"]
+[ext_resource type="AudioStream" uid="uid://cqjnwafurfru5" path="res://Assets/dano (1).wav" id="15_djdwp"]
+[ext_resource type="AudioStream" uid="uid://ccm5vm3ys0ina" path="res://Assets/dano (2).wav" id="16_o4ggp"]
+[ext_resource type="AudioStream" uid="uid://btm738uao4dhm" path="res://Assets/dano (3).wav" id="17_t3hon"]
+[ext_resource type="AudioStream" uid="uid://ehxat7rdlwr2" path="res://Assets/dano (4).wav" id="18_kvabo"]
+[ext_resource type="AudioStream" uid="uid://c5m2gthcps67o" path="res://Assets/king.wav" id="19_70iwr"]
+[ext_resource type="AudioStream" uid="uid://3w3isdfnb71t" path="res://Assets/pat.wav" id="20_vowtd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q0k7k"]
 size = Vector2(29, 52)
@@ -751,6 +762,42 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lej6u"]
 size = Vector2(58, 76)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_upfdm"]
+streams_count = 2
+random_volume_offset_db = 18.86
+stream_0/stream = ExtResource("10_16joa")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("11_pstdc")
+stream_1/weight = 77.191
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_n0p57"]
+streams_count = 2
+random_volume_offset_db = 8.96
+stream_0/stream = ExtResource("12_c5ft4")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("13_jxrqt")
+stream_1/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_u3ubs"]
+streams_count = 5
+stream_0/stream = ExtResource("14_6cxdr")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("15_djdwp")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("16_o4ggp")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("17_t3hon")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("18_kvabo")
+stream_4/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_id2ai"]
+streams_count = 2
+stream_0/stream = ExtResource("19_70iwr")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("20_vowtd")
+stream_1/weight = 1.0
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
 texture_filter = 1
 position = Vector2(65, 158)
@@ -807,6 +854,19 @@ position = Vector2(-3, 1)
 shape = SubResource("RectangleShape2D_lej6u")
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="pulo" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_upfdm")
+volume_db = 9.905
+
+[node name="atacou" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_n0p57")
+
+[node name="dano" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_u3ubs")
+
+[node name="king" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_id2ai")
 
 [connection signal="animation_finished" from="Sprites/Armed" to="." method="_on_armed_animation_finished"]
 [connection signal="animation_finished" from="Sprites/NoShield" to="." method="_on_no_shield_animation_finished"]

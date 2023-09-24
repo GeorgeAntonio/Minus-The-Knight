@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ccm5vm3ys0ina"
+path="res://.godot/imported/dano (2).wav-e9d3857e3f7b0f74505916f60d2c8d42.sample"
+
+[deps]
+
+source_file="res://Assets/dano (2).wav"
+dest_files=["res://.godot/imported/dano (2).wav-e9d3857e3f7b0f74505916f60d2c8d42.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

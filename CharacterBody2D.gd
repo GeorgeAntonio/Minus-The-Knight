@@ -8,6 +8,9 @@ var game_over = load("res://Scenes/Main_Menu/Main_Menu.tscn")
 signal attacking(state)
 
 @onready var pulo = $pulo
+@onready var atacou = $atacou
+@onready var dano = $dano
+@onready var king = $king
 
 @export var dmg = 4
 @export var target : CharacterBody2D
@@ -78,6 +81,7 @@ func _physics_process(delta):
 		for i in $Sprites.get_children():
 			if(state != 4):
 				i.play('attacking')
+				atacou.play()
 		can_attack = false
 		if(global_position.distance_to(target.global_position) < 120):
 			target.hp = target.hp - dmg
@@ -112,6 +116,7 @@ func _on_no_shield_animation_finished():
 		if(i.animation == 'break'):
 			change_state(3)
 		i.play('idle')
+		king.play()
 
 
 func _on_unarmed_animation_finished():
@@ -127,7 +132,8 @@ func _on_no_armor_animation_finished():
 func _on_arrow_detector_body_entered(body):
 	if state == 1 && get_parent().name == 'Scene_5':
 		$Sprites/Armed.play('break')
-	hp = hp-1 
+	hp = hp-1
+	dano.play() 
 	body.queue_free()
 		
 	
