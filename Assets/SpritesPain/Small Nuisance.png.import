@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://mem2st0vm4r7"
-path="res://.godot/imported/ABSOLUTE PAIN.png-c2707487dcf043e5100d95faec8e00ad.ctex"
+uid="uid://tt3cj4hdn2se"
+path="res://.godot/imported/Small Nuisance.png-e75d4698a24fefaf920caca949f442af.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/SpritesPain/ABSOLUTE PAIN.png"
-dest_files=["res://.godot/imported/ABSOLUTE PAIN.png-c2707487dcf043e5100d95faec8e00ad.ctex"]
+source_file="res://Assets/SpritesPain/Small Nuisance.png"
+dest_files=["res://.godot/imported/Small Nuisance.png-e75d4698a24fefaf920caca949f442af.ctex"]
 
 [params]
 

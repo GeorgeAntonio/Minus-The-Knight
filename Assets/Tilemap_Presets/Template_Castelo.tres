@@ -1,8 +1,9 @@
-[gd_resource type="TileSet" load_steps=21 format=3 uid="uid://cxbffb7mcq178"]
+[gd_resource type="TileSet" load_steps=23 format=3 uid="uid://cxbffb7mcq178"]
 
 [ext_resource type="Texture2D" uid="uid://61pyvl0yddng" path="res://Art/Medieval_tiles_free2.png" id="1_k5d2v"]
 [ext_resource type="Texture2D" uid="uid://d256kk8lnih3f" path="res://Art/Medieval_props_free.png" id="2_ygbow"]
 [ext_resource type="Texture2D" uid="uid://gun6220exe2c" path="res://Art/sewer_tileset.png" id="3_f66uj"]
+[ext_resource type="Texture2D" uid="uid://16r5r7fbrvf8" path="res://Assets/SpritesPain/ABSOLUTE BIGGEST PAIN.png" id="3_wqwqy"]
 [ext_resource type="Texture2D" uid="uid://brjk07qam1chl" path="res://Assets/GothicVania Church/Environment/column.png" id="4_blp1t"]
 [ext_resource type="Texture2D" uid="uid://butwbl045ggw7" path="res://Assets/GothicVania Church/Environment/bg-3.png" id="5_edemp"]
 [ext_resource type="Texture2D" uid="uid://bi5nutmnj3grl" path="res://Assets/GothicVania Church/Environment/bg-4.png" id="6_f77xp"]
@@ -5063,6 +5064,60 @@ margins = Vector2i(0, 9)
 27:6/0 = 0
 27:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 27:6/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o81m3"]
+texture = ExtResource("3_wqwqy")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0 = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+3:0/0 = 0
+3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:0/0/physics_layer_0/angular_velocity = 0.0
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+2:1/0 = 0
+2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:1/0/physics_layer_0/angular_velocity = 0.0
+3:1/0 = 0
+3:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:1/0/physics_layer_0/angular_velocity = 0.0
+4:1/0 = 0
+4:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:1/0/physics_layer_0/angular_velocity = 0.0
+5:1/0 = 0
+5:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:1/0/physics_layer_0/angular_velocity = 0.0
+1:2/0 = 0
+1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:2/0/physics_layer_0/angular_velocity = 0.0
+2:2/0 = 0
+2:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:2/0/physics_layer_0/angular_velocity = 0.0
+3:2/0 = 0
+3:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:2/0/physics_layer_0/angular_velocity = 0.0
+4:2/0 = 0
+4:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:2/0/physics_layer_0/angular_velocity = 0.0
+5:2/0 = 0
+5:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:2/0/physics_layer_0/angular_velocity = 0.0
+2:3/0 = 0
+2:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:3/0/physics_layer_0/angular_velocity = 0.0
+3:3/0 = 0
+3:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:3/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ofvum"]
 texture = ExtResource("3_f66uj")
@@ -20970,3 +21025,4 @@ sources/6 = SubResource("TileSetAtlasSource_gue06")
 sources/7 = SubResource("TileSetAtlasSource_yymdm")
 sources/8 = SubResource("TileSetAtlasSource_lewy0")
 sources/9 = SubResource("TileSetAtlasSource_m7apx")
+sources/14 = SubResource("TileSetAtlasSource_o81m3")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://mem2st0vm4r7"
-path="res://.godot/imported/ABSOLUTE PAIN.png-c2707487dcf043e5100d95faec8e00ad.ctex"
+uid="uid://b1bc2utoljh70"
+path="res://.godot/imported/BIGBalArrow.png-df48c33c818945d072437c8972867d9f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/SpritesPain/ABSOLUTE PAIN.png"
-dest_files=["res://.godot/imported/ABSOLUTE PAIN.png-c2707487dcf043e5100d95faec8e00ad.ctex"]
+source_file="res://Assets/SpritesPain/BIGBalArrow.png"
+dest_files=["res://.godot/imported/BIGBalArrow.png-df48c33c818945d072437c8972867d9f.ctex"]
 
 [params]
 
