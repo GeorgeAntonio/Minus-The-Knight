@@ -70,7 +70,7 @@ position = Vector2(2904, 556)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 position = Vector2(-61, 4)
-zoom = Vector2(3, 3)
+zoom = Vector2(2, 2)
 limit_left = 0
 
 [node name="Node" type="Node2D" parent="."]
