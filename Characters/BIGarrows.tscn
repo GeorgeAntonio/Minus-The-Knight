@@ -3,16 +3,23 @@
 [ext_resource type="Script" path="res://Characters/BIGarrows.gd" id="1_83vjm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xmad4"]
-size = Vector2(158, 179)
+size = Vector2(28.0049, 24.2142)
 
 [node name="BIGarrows" type="StaticBody2D"]
+position = Vector2(527, 272)
+rotation = -0.0189219
 script = ExtResource("1_83vjm")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(67, 77)
+rotation = 0.0135547
+scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_xmad4")
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(-37, 46)
+position = Vector2(-77.9861, -1.4758)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -3,6 +3,7 @@ extends Scene
 
 var level_b := load("res://Scenes/Scene_1/Scene_1.tscn")
 var level_f := load("res://Scenes/Scene_3/Scene_3.tscn")
+var level_secreto := load("res://Scenes/Scene_3.5/Scene 3.5.tscn")
 
 var exit_1 : bool
 var exit_2 : bool
@@ -27,7 +28,7 @@ func _ready():
 	elif st_loc == 2:
 		$CharacterBody2D.position = Vector2(101,421)
 	elif st_loc == 4:
-		$CharacterBody2D.position = Vector2(3090,-123)
+		$CharacterBody2D.position = Vector2(3180,-60)
 	elif st_loc == 5:
 		$CharacterBody2D.position = Vector2(2995,418)
 	elif st_loc == 6:
@@ -41,7 +42,7 @@ func _process(delta):
 	elif(exit_2):
 		emit_signal('next_level', level_b, 2)
 	elif(exit_3):
-		emit_signal('next_level', level_f, 7)
+		emit_signal('next_level', level_secreto, 7)
 	if(exit_4):
 		emit_signal('next_level', level_f, 8)
 	elif(exit_5):
