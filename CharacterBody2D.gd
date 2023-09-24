@@ -7,6 +7,8 @@ var game_over = load("res://Scenes/Main_Menu/Main_Menu.tscn")
 @export var hp = 6
 signal attacking(state)
 
+@onready var pulo = $pulo
+
 
 var direction
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -61,6 +63,7 @@ func _physics_process(delta):
 	# Handle Jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		pulo.play()
 		#for i in $Sprites.get_children():
 		#	i.play('jump')
 
