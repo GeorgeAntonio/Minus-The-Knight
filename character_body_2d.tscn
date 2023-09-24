@@ -287,18 +287,21 @@ frame = 3
 frame_progress = 0.962613
 
 [node name="NoShield" type="AnimatedSprite2D" parent="Sprites"]
+visible = false
 position = Vector2(-57, -5)
 sprite_frames = SubResource("SpriteFrames_5grgq")
 animation = &"idle"
 frame_progress = 0.115706
 
 [node name="Unarmed" type="AnimatedSprite2D" parent="Sprites"]
+visible = false
 position = Vector2(-58, -5)
 sprite_frames = SubResource("SpriteFrames_y4ukq")
 animation = &"idle"
 frame_progress = 0.514791
 
 [node name="NoArmor" type="AnimatedSprite2D" parent="Sprites"]
+visible = false
 position = Vector2(-61.5, 1)
 scale = Vector2(1.02, 1.02)
 sprite_frames = SubResource("SpriteFrames_0c8rc")
