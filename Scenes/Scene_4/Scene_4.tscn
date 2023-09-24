@@ -67,7 +67,7 @@ layer_2/tile_data = PackedInt32Array(2293759, 65543, 1, 2228224, 7, 1, 2228225, 
 metadata/_edit_lock_ = true
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("3_ro6ny")]
-position = Vector2(450, 419)
+position = Vector2(640, 10)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 position = Vector2(-61, 4)
@@ -267,7 +267,7 @@ scale = Vector2(6.17187, 6.125)
 shape = SubResource("RectangleShape2D_u0mmt")
 
 [node name="StaticBody2D11" type="StaticBody2D" parent="Node"]
-position = Vector2(4044, -104)
+position = Vector2(4032, -20)
 metadata/_edit_group_ = true
 
 [node name="Chandelier-wire" type="Sprite2D" parent="Node/StaticBody2D11"]
