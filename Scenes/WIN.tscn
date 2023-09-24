@@ -10,11 +10,13 @@ theme = ExtResource("1_pmvxk")
 script = ExtResource("2_37vfi")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
 offset_right = 1232.0
 offset_bottom = 720.0
 color = Color(0.427451, 0.482353, 0.572549, 1)
 
 [node name="Label" type="Label" parent="."]
+layout_mode = 0
 offset_left = 383.0
 offset_top = 157.0
 offset_right = 798.0

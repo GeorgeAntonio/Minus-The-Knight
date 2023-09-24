@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bjbh33b7tp0bp"]
+[gd_scene load_steps=13 format=3 uid="uid://bjbh33b7tp0bp"]
 
 [ext_resource type="Texture2D" uid="uid://ddn4yjglnibl0" path="res://Art/Free Pixel Art Forest/Preview/Background.png" id="1_0fw4k"]
 [ext_resource type="Script" path="res://Scenes/Scene_2/Scene_2.gd" id="1_v5g5w"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dn01hdm3w02d4" path="res://Art/Throne.png" id="4_elen6"]
 [ext_resource type="PackedScene" uid="uid://bkt74veruxyxm" path="res://Characters/King/King.tscn" id="5_bwvmq"]
 [ext_resource type="PackedScene" uid="uid://bagnku5x05d4v" path="res://character_body_2d.tscn" id="6_vco44"]
+[ext_resource type="Texture2D" uid="uid://bw6450btplfl" path="res://Assets/Sword Wall..png" id="7_2xmha"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qudu3"]
 size = Vector2(30.75, 92.5)
@@ -115,6 +116,10 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="final"]
 position = Vector2(100, 178)
 shape = SubResource("RectangleShape2D_pq0b2")
+
+[node name="SwordWall_" type="Sprite2D" parent="."]
+position = Vector2(98, 178)
+texture = ExtResource("7_2xmha")
 
 [connection signal="area_entered" from="ArenaDoor" to="King" method="_on_arena_door_area_entered"]
 [connection signal="body_entered" from="Spikes" to="." method="_on_spikes_body_entered"]

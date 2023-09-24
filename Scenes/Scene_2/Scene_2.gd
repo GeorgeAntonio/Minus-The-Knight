@@ -7,6 +7,8 @@ var exit_2 : bool
 var win = load("res://Scenes/WIN.tscn")
 
 func _process(delta):
+	if($CharacterBody2D.state == 5): 		
+		$SwordWall_.hide()
 	if($King.hp == 0):
 		emit_signal('next_level',win,-1)
 		
