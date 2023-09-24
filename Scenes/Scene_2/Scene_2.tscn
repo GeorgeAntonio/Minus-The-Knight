@@ -80,7 +80,7 @@ position = Vector2(210, 193)
 target = NodePath("../CharacterBody2D")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("6_vco44")]
-position = Vector2(278, 577)
+position = Vector2(371, 189)
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(57, 215)
@@ -91,4 +91,5 @@ position = Vector2(4.5, -18)
 shape = SubResource("RectangleShape2D_nwmi7")
 
 [connection signal="area_entered" from="ArenaDoor" to="King" method="_on_arena_door_area_entered"]
+[connection signal="king_attack" from="King" to="." method="_on_king_attack"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

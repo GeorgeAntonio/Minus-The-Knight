@@ -3,7 +3,7 @@ extends CharacterBody2D
 var game_over = load("res://Scenes/Game_Over/Game_Over.tscn")
 @export var SPEED = 300.0
 @export var  JUMP_VELOCITY = -400.0
-@export var state := 0 #Armed is default
+@export var state := 1 #Armed is default
 @export var hp = 10
 signal attacking(state)
 signal next_level()
@@ -12,15 +12,6 @@ var direction
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-
-func connect_signals():
-	if(get_parent().name == 'Scene_1'):
-		self.king_attack.connect('on_king_attack')
-		
-func on_king_attack():
-	$Sprites/Armed.play('break')
-	change_state(3)
-	
 func change_state(n:int):
 	state = n
 
@@ -43,7 +34,7 @@ func _process(delta):
 					i.show()
 					
 		2:
-			for i in $Sprite.get_children():
+			for i in $Sprites.get_children():
 				if(i.name != 'NoShield'):
 					i.hide()
 				else:
@@ -98,7 +89,25 @@ func _physics_process(delta):
 
 	move_and_slide()
 
+func _on_armed_animation_finished():
+	for i in $Sprites.get_children():
+		if(i.animation == 'break'):
+			change_state(2)
+		i.play('idle')
 
-func _on_animation_finished():
+
+func _on_no_shield_animation_finished():
+	for i in $Sprites.get_children():
+		if(i.animation == 'break'):
+			change_state(3)
+		i.play('idle')
+
+
+func _on_unarmed_animation_finished():
+	for i in $Sprites.get_children():
+		i.play('idle')
+
+
+func _on_no_armor_animation_finished():
 	for i in $Sprites.get_children():
 		i.play('idle')

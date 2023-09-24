@@ -162,7 +162,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wyray")
 }],
-"loop": true,
+"loop": false,
 "name": &"break",
 "speed": 5.0
 }, {
@@ -384,7 +384,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_taqdq")
 }],
-"loop": true,
+"loop": false,
 "name": &"break",
 "speed": 5.0
 }, {
@@ -662,8 +662,6 @@ position = Vector2(-60, -5)
 sprite_frames = SubResource("SpriteFrames_u47qx")
 animation = &"break"
 autoplay = "idle"
-frame = 1
-frame_progress = 0.603582
 
 [node name="NoShield" type="AnimatedSprite2D" parent="Sprites"]
 visible = false
@@ -671,7 +669,6 @@ position = Vector2(-57, -5)
 sprite_frames = SubResource("SpriteFrames_5grgq")
 animation = &"break"
 autoplay = "idle"
-frame_progress = 0.986507
 
 [node name="Unarmed" type="AnimatedSprite2D" parent="Sprites"]
 visible = false
@@ -687,7 +684,7 @@ sprite_frames = SubResource("SpriteFrames_0c8rc")
 animation = &"idle"
 autoplay = "idle"
 
-[connection signal="animation_finished" from="Sprites/Armed" to="." method="_on_animation_finished"]
-[connection signal="animation_finished" from="Sprites/NoShield" to="." method="_on_animation_finished"]
-[connection signal="animation_finished" from="Sprites/Unarmed" to="." method="_on_animation_finished"]
-[connection signal="animation_finished" from="Sprites/NoArmor" to="." method="_on_animation_finished"]
+[connection signal="animation_finished" from="Sprites/Armed" to="." method="_on_armed_animation_finished"]
+[connection signal="animation_finished" from="Sprites/NoShield" to="." method="_on_no_shield_animation_finished"]
+[connection signal="animation_finished" from="Sprites/Unarmed" to="." method="_on_unarmed_animation_finished"]
+[connection signal="animation_finished" from="Sprites/NoArmor" to="." method="_on_no_armor_animation_finished"]
