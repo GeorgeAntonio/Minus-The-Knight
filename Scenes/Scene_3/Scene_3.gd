@@ -7,15 +7,12 @@ var next_room := load("res://Scenes/Scene_5/Scene_5.tscn")
 #@onready var serra2 =$serra2
 
 func _ready():
-	#serra.play()
-	#serra2.play()
-	
 	if st_loc == 8:
 		$CharacterBody2D.position = Vector2(62,565)
 	elif st_loc == 9:
 		$CharacterBody2D.position = Vector2(82,662)
-	#elif st_loc == 7:
-		#$CharacterBody2D.position = Vector2(-42,-74)
+	elif st_loc == 7:
+		$CharacterBody2D.position = Vector2(-42,-74)
 	elif st_loc == 10:
 		$CharacterBody2D.position = Vector2(1278,565)
 	elif st_loc == 11:

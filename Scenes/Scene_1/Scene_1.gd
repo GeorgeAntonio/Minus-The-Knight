@@ -39,5 +39,6 @@ func _on_s_3_body_entered(body):
 	exit_3 = true
 
 func _on_water_body_entered(body):
+	print(body.state)
 	if(body.state != 4):
 		body.hp = 0

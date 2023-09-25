@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b501r3528wd06"
-path="res://.godot/imported/SmollArrow.png-8f37e7f4ea8a692576240f2b212ba8b0.ctex"
+uid="uid://bw6450btplfl"
+path="res://.godot/imported/Sword Wall..png-273ce6bd38aa04770d8fdd7f13c99b78.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/SpritesPain/SmollArrow.png"
-dest_files=["res://.godot/imported/SmollArrow.png-8f37e7f4ea8a692576240f2b212ba8b0.ctex"]
+source_file="res://Assets/Sword Wall..png"
+dest_files=["res://.godot/imported/Sword Wall..png-273ce6bd38aa04770d8fdd7f13c99b78.ctex"]
 
 [params]
 

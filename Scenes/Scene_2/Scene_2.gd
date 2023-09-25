@@ -4,9 +4,14 @@ var level := load("res://Scenes/Scene_5/Scene_5.tscn")
 
 var exit_1 : bool
 var exit_2 : bool
+var win = load("res://Scenes/WIN.tscn")
 
-
-
+func _process(delta):
+	if($CharacterBody2D.state == 5): 		
+		$SwordWall_.hide()
+	if($King.hp == 0):
+		emit_signal('next_level',win,-1)
+		
 func _ready():
 	var exit_1 = false
 	var exit_2 = false
@@ -33,3 +38,7 @@ func _on_area_2d_2_body_entered(body):
 func _on_spikes_body_entered(body):
 	if(body.state != 4):
 		body.hp = 0
+
+
+func _on_final_body_entered(body):
+	body.state = 5

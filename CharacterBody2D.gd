@@ -5,15 +5,14 @@ var game_over = load("res://Scenes/Main_Menu/Main_Menu.tscn")
 @export var  JUMP_VELOCITY = -350.0
 @export var state := 1 #Armed is default
 @export var hp = 6
-signal attacking(state)
+@export var dmg = 4
+@export var target : CharacterBody2D
 
 @onready var pulo = $pulo
 @onready var atacou = $atacou
 @onready var dano = $dano
 @onready var king = $king
 
-@export var dmg = 4
-@export var target : CharacterBody2D
 var can_attack = true
 
 var direction
@@ -62,6 +61,7 @@ func _process(delta):
 					i.hide()
 				else:
 					i.show()
+		5: dmg = 10000
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -71,9 +71,9 @@ func _physics_process(delta):
 	# Handle Jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-		pulo.play()
 		#for i in $Sprites.get_children():
 		#	i.play('jump')
+		pulo.play()
 
 
 	#Handle Attack
@@ -82,9 +82,12 @@ func _physics_process(delta):
 			if(state != 4):
 				i.play('attacking')
 				atacou.play()
+				if(state == 5):
+					emit_signal("win")
 		can_attack = false
-		if(global_position.distance_to(target.global_position) < 120):
-			target.hp = target.hp - dmg
+		if(target != null):
+			if(global_position.distance_to(target.global_position) < 120):
+				target.hp = target.hp - dmg
 	#Handle Death
 	
 	# Get the input direction and handle the movement/deceleration.
@@ -132,8 +135,10 @@ func _on_no_armor_animation_finished():
 func _on_arrow_detector_body_entered(body):
 	if state == 1 && get_parent().name == 'Scene_5':
 		$Sprites/Armed.play('break')
-	hp = hp-1
-	dano.play() 
-	body.queue_free()
+	elif state > 1:
+		hp = hp - 1
+		dano.play() 
+	if(!(body is CharacterBody2D)):
+		body.queue_free()
 		
 	
