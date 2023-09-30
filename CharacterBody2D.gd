@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
 var game_over = load("res://Scenes/Main_Menu/Main_Menu.tscn")
 @export var SPEED = 300.0

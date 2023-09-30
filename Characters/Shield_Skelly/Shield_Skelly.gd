@@ -1,56 +1,105 @@
 extends CharacterBody2D
 
-@export var target : CharacterBody2D
-@export var speed := 50.0
-@onready var animation = $AnimatedSprite2D
-var waiting = true
-var can_attack = true
+@onready var animation = $AnimationPlayer
+@export var speed := 50
+@export var hp := 5
+var target
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-var direction = Vector2(1,0)
-
-signal attack()
+var dir : int
+var can_attack := true
+var state := 1
 
 func _physics_process(delta):
-	# Add the gravity.
 	velocity.y += gravity * delta
-	
-	if(!animation.is_playing()):
-		animation.play('idle')
-	if $RayCasting/Left.is_colliding():
-		waiting = false
-		follow_player(-1)
-	if $RayCasting/Right.is_colliding():
-		waiting = false
-		follow_player(1)
-	if(global_position.distance_to(target.global_position) > 500):
-		velocity = Vector2.ZERO
-	elif(global_position.distance_to(target.global_position) < 120):
-		velocity = Vector2.ZERO
-		if(can_attack):
-			$AttackTimer.start()
-			can_attack  = false
-			emit_signal('attack')
-			animation.play("attack")
-	if(velocity.x > 0 && (global_position.distance_to(target.global_position) > 150)):
-		animation.play("walking")
 	move_and_slide()
+
+func _process(delta):
+	match state:
+		
+		#IDLE
+		1:
+			velocity.x = 0
+			animation_queue('idle')
+			
+		#FOLLOW PLAYER
+		2:
+			dir = 1 if target.x > position.x else -1
+			velocity.x = dir * speed
+			face_player()
+			animation.play('walking')
+			if(position.distance_to(target) < 50):
+				state = 3
+		#ATTACK
+		3:
+			velocity.x = 0
+			attack()
+			state = 4
+			
+		#DEFEND
+		4:
+			defend()
+			if(can_attack):
+				var att_chance = randi_range(1,5)
+				if(att_chance == 1):
+					state = 3
+		
+		#SEARCHING
+		5:
+			pass
+			
+		#DEAD
+		6:
+			queue_free()
+	
+	target = get_target()
+	if(target && position.distance_to(target) >= 150):
+		state = 2
+	elif(!target):
+		state = 1
 	
 
-func follow_player(dir):
-	if dir == 1:
-		animation.flip_h = false
-	else:
-		animation.flip_h = true
-	if(global_position.distance_to(target.global_position) > 150):
-		velocity = Vector2(dir,0) * speed
-	
+func get_target():
+	for i in $RayCasting.get_children():
+		if(i.get_collider() is Player):
+			return i.get_collider().global_position
+	return
 
+func face_player():
+	if(target.x > position.x && scale.y == -1):
+		scale.y = 1
+		rotation_degrees = 0
+	elif(target.x < position.x && scale.y == 1):
+		scale.y = -1
+		rotation_degrees = 180
 
-func _on_arena_door_area_entered(area):
-	waiting = true
-	follow_player(-1)
+func attack():
+	if(can_attack):
+		animation_queue('attack')
+		can_attack = false
+		$AttackTimer.start()
 
+func defend():
+	animation_queue('shield')
+
+func animation_queue(anim):
+	if(anim not in animation.get_queue()):
+		animation.queue(anim)
 
 func _on_attack_timer_timeout():
 	can_attack = true
 
+
+func _on_search_timer_timeout():
+	state = 1
+
+
+func _on_sword_body_entered(body):
+	if body is Player:
+		body.hp = body.hp - 1
+		
+		
+func _on_hit(dmg):
+	animation.play('hurt')
+	hp = hp - dmg
+		
+		
