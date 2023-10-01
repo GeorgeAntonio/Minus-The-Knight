@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://dexhvkbvmq5hn"]
 
 [ext_resource type="Script" path="res://Scenes/Flecha/Flecha.gd" id="1_v7h7h"]
-[ext_resource type="Texture2D" uid="uid://u5ecg8irxug0" path="res://Assets/SpritesPain/SmollArrow.png" id="2_ssogx"]
+[ext_resource type="Texture2D" uid="uid://b501r3528wd06" path="res://Assets/SpritesPain/SmollArrow.png" id="2_ssogx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8lcya"]
 size = Vector2(30.5, 5.5)
 
 [node name="Flecha" type="RigidBody2D"]
-collision_layer = 8
+collision_layer = 32
 collision_mask = 15
 script = ExtResource("1_v7h7h")
 

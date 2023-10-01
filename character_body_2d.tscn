@@ -1,4 +1,4 @@
-[gd_scene load_steps=125 format=3 uid="uid://bagnku5x05d4v"]
+[gd_scene load_steps=126 format=3 uid="uid://bagnku5x05d4v"]
 
 [ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_o26up"]
 [ext_resource type="Texture2D" uid="uid://c7y7sssavwdxs" path="res://Assets/heroarmed/HeroKnight.png" id="2_n6dl2"]
@@ -24,13 +24,13 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q0k7k"]
 size = Vector2(29, 40)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l1ov4"]
-atlas = ExtResource("2_n6dl2")
-region = Rect2(800, 55, 100, 55)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_gd0fr"]
 atlas = ExtResource("2_n6dl2")
 region = Rect2(900, 55, 100, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l1ov4"]
+atlas = ExtResource("2_n6dl2")
+region = Rect2(800, 55, 100, 55)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nwxp6"]
 atlas = ExtResource("2_n6dl2")
@@ -140,10 +140,10 @@ region = Rect2(700, 55, 100, 55)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_l1ov4")
+"texture": SubResource("AtlasTexture_gd0fr")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gd0fr")
+"texture": SubResource("AtlasTexture_l1ov4")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nwxp6")
@@ -759,6 +759,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_07v1i"]
+size = Vector2(18, 45)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lej6u"]
 size = Vector2(16, 32)
 
@@ -808,22 +811,24 @@ script = ExtResource("1_o26up")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2.5, 6)
 shape = SubResource("RectangleShape2D_q0k7k")
+metadata/_edit_lock_ = true
 
 [node name="Sprites" type="Node2D" parent="."]
+metadata/_edit_group_ = true
 
 [node name="Armed" type="AnimatedSprite2D" parent="Sprites"]
 sprite_frames = SubResource("SpriteFrames_u47qx")
-animation = &"walking"
+animation = &"attacking"
 autoplay = "idle"
-frame_progress = 0.317311
+frame = 5
+frame_progress = 1.0
 
 [node name="NoShield" type="AnimatedSprite2D" parent="Sprites"]
 visible = false
 position = Vector2(1, -1)
 sprite_frames = SubResource("SpriteFrames_5grgq")
-animation = &"idle"
+animation = &"walking"
 autoplay = "idle"
-frame_progress = 0.948762
 
 [node name="Unarmed" type="AnimatedSprite2D" parent="Sprites"]
 visible = false
@@ -840,12 +845,24 @@ scale = Vector2(1.02, 1.02)
 sprite_frames = SubResource("SpriteFrames_0c8rc")
 animation = &"attacking"
 autoplay = "idle"
-frame_progress = 0.95435
+frame_progress = 0.812105
+
+[node name="Attack" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 8
+metadata/_edit_group_ = true
+
+[node name="AttackCollision" type="CollisionShape2D" parent="Attack"]
+position = Vector2(22, -4.5)
+shape = SubResource("RectangleShape2D_07v1i")
+disabled = true
 
 [node name="ArrowDetector" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 8
 priority = 1
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="ArrowDetector"]
 
@@ -858,15 +875,19 @@ shape = SubResource("RectangleShape2D_lej6u")
 [node name="pulo" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_upfdm")
 volume_db = 9.905
+metadata/_edit_lock_ = true
 
 [node name="atacou" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_n0p57")
+metadata/_edit_lock_ = true
 
 [node name="dano" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_u3ubs")
+metadata/_edit_lock_ = true
 
 [node name="king" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_id2ai")
+metadata/_edit_lock_ = true
 
 [connection signal="animation_finished" from="Sprites/Armed" to="." method="_on_armed_animation_finished"]
 [connection signal="animation_finished" from="Sprites/NoShield" to="." method="_on_no_shield_animation_finished"]

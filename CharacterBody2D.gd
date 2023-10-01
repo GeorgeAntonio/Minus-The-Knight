@@ -74,15 +74,17 @@ func _physics_process(delta):
 		#for i in $Sprites.get_children():
 		#	i.play('jump')
 		pulo.play()
-
-
+	if($Sprites/Armed.animation == 'attacking'):
+		$Attack/AttackCollision.disabled = false
+	else:
+		$Attack/AttackCollision.disabled = true
 	#Handle Attack
 	if Input.is_action_just_pressed('left_click'):
 		for i in $Sprites.get_children():
 			if(state != 4):
 				i.play('attacking')
 				atacou.play()
-				if(state == 5):
+				if(state == 5): 
 					emit_signal("win")
 		can_attack = false
 		if(target != null):
@@ -98,9 +100,11 @@ func _physics_process(delta):
 		if(direction > 0):
 			for i in $Sprites.get_children():
 				i.flip_h=false
+				$Attack.position = Vector2(0,0)
 		elif(direction < 0):
 			for i in $Sprites.get_children():
 				i.flip_h=true
+				$Attack.position = Vector2(-49,2)
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 #	#	
@@ -140,5 +144,3 @@ func _on_arrow_detector_body_entered(body):
 		dano.play() 
 	if(!(body is CharacterBody2D)):
 		body.queue_free()
-		
-	

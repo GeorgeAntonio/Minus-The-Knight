@@ -49,14 +49,16 @@ func _process(delta):
 			
 		#DEAD
 		6:
-			queue_free()
-	
+			if(animation.current_animation != 'death'):
+				animation.play('death')
+			
 	target = get_target()
 	if(target && position.distance_to(target) >= 150):
 		state = 2
 	elif(!target):
 		state = 1
-	
+	if(hp <= 0):
+		state = 6
 
 func get_target():
 	for i in $RayCasting.get_children():
@@ -98,8 +100,11 @@ func _on_sword_body_entered(body):
 		body.hp = body.hp - 1
 		
 		
-func _on_hit(dmg):
+func _on_hitbox_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
 	animation.play('hurt')
-	hp = hp - dmg
-		
-		
+	hp = hp -1
+
+
+func _on_animation_player_animation_finished(anim_name):
+	if(anim_name == 'death'):
+		queue_free()
