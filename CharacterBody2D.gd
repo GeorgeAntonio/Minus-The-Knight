@@ -6,7 +6,6 @@ var game_over = load("res://Scenes/Main_Menu/Main_Menu.tscn")
 @export var state := 1 #Armed is default
 @export var hp = 6
 @export var dmg = 4
-@export var target : CharacterBody2D
 
 @onready var pulo = $pulo
 @onready var atacou = $atacou
@@ -25,7 +24,8 @@ func change_state(n:int):
 func _process(delta):
 	if(velocity != Vector2.ZERO):
 		for i in $Sprites.get_children():
-			i.play('walking')
+			if(i.animation != 'break'):
+				i.play('walking')
 	else:
 		for i in $Sprites.get_children():
 			if(i.animation == 'walking'):
@@ -74,22 +74,21 @@ func _physics_process(delta):
 		#for i in $Sprites.get_children():
 		#	i.play('jump')
 		pulo.play()
-	if($Sprites/Armed.animation == 'attacking'):
+	if($Sprites/Armed.animation == 'attacking' && $Sprites/Armed.frame == 2):
 		$Attack/AttackCollision.disabled = false
 	else:
 		$Attack/AttackCollision.disabled = true
 	#Handle Attack
 	if Input.is_action_just_pressed('left_click'):
 		for i in $Sprites.get_children():
-			if(state != 4):
+			if((state < 3 || state == 5) && i.animation != 'break'):
 				i.play('attacking')
 				atacou.play()
 				if(state == 5): 
-					emit_signal("win")
+					if(get_parent().name == 'Scene_2'):
+						get_parent().get_node('King').hp = 0
 		can_attack = false
-		if(target != null):
-			if(global_position.distance_to(target.global_position) < 120):
-				target.hp = target.hp - dmg
+		
 	#Handle Death
 	
 	# Get the input direction and handle the movement/deceleration.
@@ -104,7 +103,7 @@ func _physics_process(delta):
 		elif(direction < 0):
 			for i in $Sprites.get_children():
 				i.flip_h=true
-				$Attack.position = Vector2(-49,2)
+				$Attack.position = Vector2(-50,0)
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 #	#	
@@ -128,19 +127,27 @@ func _on_no_shield_animation_finished():
 
 func _on_unarmed_animation_finished():
 	for i in $Sprites.get_children():
-		i.play('idle')
+		if(i.animation != 'break'):
+			i.play('idle')
 
 
 func _on_no_armor_animation_finished():
 	for i in $Sprites.get_children():
-		i.play('idle')
+		if(i.animation != 'break'):
+			i.play('idle')
+
+func _on_hitbox_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
+	hp = hp - 1
 
 
-func _on_arrow_detector_body_entered(body):
-	if state == 1 && get_parent().name == 'Scene_5':
-		$Sprites/Armed.play('break')
-	elif state > 1:
-		hp = hp - 1
-		dano.play() 
-	if(!(body is CharacterBody2D)):
-		body.queue_free()
+func _on_hitbox_body_entered(body):
+	if body is Flecha:
+		if(body.id == 2):
+			if state == 1 && get_parent().name == 'Scene_5':
+				$Sprites/Armed.play('break')
+			elif state > 1:
+				hp = hp - 5
+				dano.play() 
+		else:
+			if state > 1:
+				hp = hp - 1

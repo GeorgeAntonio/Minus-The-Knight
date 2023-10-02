@@ -15,7 +15,6 @@ func _ready():
 		$CharacterBody2D.position = Vector2(249,-182)		
 	elif st_loc == 3:
 		$CharacterBody2D.position = Vector2(262,85)
-	print(st_loc)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -39,6 +38,5 @@ func _on_s_3_body_entered(body):
 	exit_3 = true
 
 func _on_water_body_entered(body):
-	print(body.state)
 	if(body.state != 4):
 		body.hp = 0

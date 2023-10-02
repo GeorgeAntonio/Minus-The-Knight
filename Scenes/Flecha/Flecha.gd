@@ -1,7 +1,7 @@
-extends RigidBody2D
+class_name Flecha extends RigidBody2D
 @onready var speed = 5
 var direction := Vector2(-1,0)
-
+var id = 1
 func _ready():
 	gravity_scale = 0
 
@@ -14,4 +14,4 @@ func set_direction(direction: Vector2):
 		self.direction = direction
 
 func _on_body_entered(body):
-		self.queue_free()
+	self.queue_free()

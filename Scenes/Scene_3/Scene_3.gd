@@ -33,3 +33,6 @@ func _on_e_3_body_entered(body):
 func _on_area_2d_body_entered(body):
 	emit_signal("next_level", next_room, 13)
 	
+
+func _on_saw_body_entered(body):
+	body.hp = 0

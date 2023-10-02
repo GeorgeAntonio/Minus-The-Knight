@@ -34,15 +34,28 @@ func _physics_process(delta):
 		match att:
 			1:
 				animation.play("attack_1")
+				
 			2:
 				animation.play("attack_2")
+				
 			3:
 				animation.play("attack_3")
+				
 	if(position.x == 210 && waiting == true):
 		velocity = Vector2.ZERO
 		animation.flip_h = false
 	if(velocity.x > 0 && (global_position.distance_to(target.global_position) > 150)):
 		animation.play("walking")
+	if(animation.animation == 'attack_1' && animation.frame == 2):
+		$Att_1/SwordCollision1.disabled = false
+	elif(animation.animation == 'attack_2' && animation.frame == 2):
+		$Att_2/SwordCollision2.disabled = false
+	elif(animation.animation == 'attack_3' && animation.frame == 2):
+		$Att_3/SwordCollision3.disabled = false
+	else:
+		$Att_1/SwordCollision1.disabled = true
+		$Att_2/SwordCollision2.disabled = true
+		$Att_3/SwordCollision3.disabled = true
 	move_and_slide()
 	
 
@@ -63,3 +76,8 @@ func _on_arena_door_area_entered(area):
 
 func _on_attack_timer_timeout():
 	can_attack = true
+
+
+func _on_hitbox_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
+	animation.play('hurt')
+	hp = hp -1

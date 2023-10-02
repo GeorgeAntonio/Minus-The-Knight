@@ -169,6 +169,7 @@ shape = SubResource("RectangleShape2D_tbqs7")
 [node name="Area2D2" type="Area2D" parent="."]
 position = Vector2(747, 595)
 scale = Vector2(0.656863, 0.573529)
+collision_mask = 4
 
 [node name="Saw2" type="Sprite2D" parent="Area2D2"]
 rotation = 1.83207
@@ -197,6 +198,8 @@ position = Vector2(964, 567)
 [node name="Besta3" parent="." instance=ExtResource("6_h6ft3")]
 position = Vector2(1031, 550)
 
+[connection signal="body_entered" from="saw/Area2D" to="." method="_on_saw_body_entered"]
 [connection signal="body_entered" from="4E1" to="." method="_on_e_1_body_entered"]
 [connection signal="body_entered" from="4E3" to="." method="_on_e_3_body_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Area2D2" to="." method="_on_saw_body_entered"]

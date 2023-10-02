@@ -42,3 +42,4 @@ func _on_spikes_body_entered(body):
 
 func _on_final_body_entered(body):
 	body.state = 5
+

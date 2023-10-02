@@ -37,6 +37,7 @@ func _on_next_level(level,n):
 	if(next_level.name != 'Main_Menu' && next_level.name != 'Settings' && next_level.name != 'WIN' ):
 		next_level.st_loc = n
 		next_level.get_node('CharacterBody2D').state = current_level.get_node('CharacterBody2D').state
+		next_level.get_node('CharacterBody2D').hp = current_level.get_node('CharacterBody2D').hp
 	change_level(next_level)
 		
 func _on_new_game():

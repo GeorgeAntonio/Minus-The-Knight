@@ -93,12 +93,6 @@ func _on_attack_timer_timeout():
 
 func _on_search_timer_timeout():
 	state = 1
-
-
-func _on_sword_body_entered(body):
-	if body is Player:
-		body.hp = body.hp - 1
-		
 		
 func _on_hitbox_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
 	animation.play('hurt')

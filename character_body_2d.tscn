@@ -760,10 +760,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_07v1i"]
-size = Vector2(18, 45)
+size = Vector2(16, 45)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lej6u"]
-size = Vector2(16, 32)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6abx2"]
+size = Vector2(31, 28)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_upfdm"]
 streams_count = 2
@@ -818,10 +818,8 @@ metadata/_edit_group_ = true
 
 [node name="Armed" type="AnimatedSprite2D" parent="Sprites"]
 sprite_frames = SubResource("SpriteFrames_u47qx")
-animation = &"attacking"
+animation = &"idle"
 autoplay = "idle"
-frame = 5
-frame_progress = 1.0
 
 [node name="NoShield" type="AnimatedSprite2D" parent="Sprites"]
 visible = false
@@ -853,22 +851,17 @@ collision_mask = 8
 metadata/_edit_group_ = true
 
 [node name="AttackCollision" type="CollisionShape2D" parent="Attack"]
-position = Vector2(22, -4.5)
+position = Vector2(23, -4.5)
 shape = SubResource("RectangleShape2D_07v1i")
 disabled = true
 
-[node name="ArrowDetector" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 4
-collision_mask = 8
-priority = 1
-metadata/_edit_lock_ = true
-metadata/_edit_group_ = true
+collision_mask = 96
 
-[node name="Sprite2D" type="Sprite2D" parent="ArrowDetector"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ArrowDetector"]
-position = Vector2(-1, 2)
-shape = SubResource("RectangleShape2D_lej6u")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-2.5, 4)
+shape = SubResource("RectangleShape2D_6abx2")
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -893,4 +886,5 @@ metadata/_edit_lock_ = true
 [connection signal="animation_finished" from="Sprites/NoShield" to="." method="_on_no_shield_animation_finished"]
 [connection signal="animation_finished" from="Sprites/Unarmed" to="." method="_on_unarmed_animation_finished"]
 [connection signal="animation_finished" from="Sprites/NoArmor" to="." method="_on_no_armor_animation_finished"]
-[connection signal="body_entered" from="ArrowDetector" to="." method="_on_arrow_detector_body_entered"]
+[connection signal="area_shape_entered" from="Hitbox" to="." method="_on_hitbox_area_shape_entered"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

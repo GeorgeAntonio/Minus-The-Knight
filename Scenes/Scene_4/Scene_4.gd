@@ -37,7 +37,6 @@ func _ready():
 
 func _process(delta):
 	super._process(delta)
-	$HP.text = str($CharacterBody2D.hp)
 	
 	if(exit_1):
 		emit_signal('next_level', level_b, 1)
